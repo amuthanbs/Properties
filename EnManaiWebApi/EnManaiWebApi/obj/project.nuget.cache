@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "uWuSTDV4X+4ReHYjbfYlye234o9d4UQ2wHNL+zI9jQLlkNP42BOaEjAMAuHTxvu8r0WcWFhfWts6kVTy1B1c6w==",
+  "dgSpecHash": "aGk5PPyu19ICRJSIT4etTHeZzIsYTNvMitORCk83fzHh2n8BgeHhWF4LMPUQmTmDQTEu2pwXG7ViMjTArb2zTw==",
   "success": true,
   "projectFilePath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi\\EnManaiWebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\amuthanbs\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\amuthanbs\\.nuget\\packages\\microsoft.aspnetcore.authentication.negotiate\\6.0.8\\microsoft.aspnetcore.authentication.negotiate.6.0.8.nupkg.sha512",
     "C:\\Users\\amuthanbs\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\6.0.8\\microsoft.aspnetcore.connections.abstractions.6.0.8.nupkg.sha512",
     "C:\\Users\\amuthanbs\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
