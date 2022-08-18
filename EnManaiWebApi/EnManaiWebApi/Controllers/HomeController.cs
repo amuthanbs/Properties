@@ -15,6 +15,7 @@ namespace EnManaiWebApi.Controllers
 
         }
         #region Rental Detail
+
         [HttpGet]
         [Route("GetAllRentalDetails")]
         public RentalDetailsResponse GetAllRentalDetails()
