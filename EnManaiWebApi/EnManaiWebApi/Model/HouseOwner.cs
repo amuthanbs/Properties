@@ -18,7 +18,7 @@
     public string CIty { get; set; }
     public string District { get; set; }
     public string State { get; set; }
-    public char Pincode { get; set; }
+    public string Pincode { get; set; }
     public bool ResidingAddress { get; set; }
 }
 }

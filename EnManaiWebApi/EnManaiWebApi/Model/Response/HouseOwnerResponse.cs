@@ -5,6 +5,6 @@ namespace EnManaiWebApi.Model.Response
     
     public class HouseOwnersResponse : Response
     {
-        List<HouseOwner> houseOwners { get; set; }
+        public List<HouseOwner> houseOwners { get;set;}
     }
 }
