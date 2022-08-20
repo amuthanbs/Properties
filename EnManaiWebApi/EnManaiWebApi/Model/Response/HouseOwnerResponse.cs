@@ -2,8 +2,9 @@
 
 namespace EnManaiWebApi.Model.Response
 {
-    public class RentalDetailsResponse : Response
+    
+    public class HouseOwnersResponse : Response
     {
-        List<RentalDetails> rentalDetails { get; set; }
+        List<HouseOwner> houseOwners { get; set; }
     }
 }

@@ -10,9 +10,10 @@ namespace EnManaiWebApi.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        public HomeController()
+        private ILogger<HomeController> _logger;
+        public HomeController(ILogger<HomeController> logger)
         {
-
+            _logger = logger;
         }
         #region Rental Detail
 
@@ -20,6 +21,7 @@ namespace EnManaiWebApi.Controllers
         [Route("GetAllRentalDetails")]
         public RentalDetailsResponse GetAllRentalDetails()
         {
+            _logger.LogInformation("Get All Rentail Details");
             RentalDetailsResponse res = new RentalDetailsResponse();
             return res;
         }
