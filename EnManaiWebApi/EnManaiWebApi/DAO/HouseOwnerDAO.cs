@@ -26,19 +26,67 @@ namespace EnManaiWebApi.DAO
             IDbConnection db = null;
             try
             {
-                //using (db = new SqlConnection(connStr))
-                //{
-                //    db.Open();
-                //    var dic = new Dictionary(string, object)
-                //    {
-                //        { "Name","n"},
-                //        { "LastName","l"},
-                //        { "FatherName","f"},
-                //        { "MotherName","n"}
-                //    };
-                //    String sql = "Insert into houseowner(Name,LastName,FatherName, MotherName,AadharNo, PhonePrimary, Phone2, LandLine1,LandLine2, EmailAddress, Address1, Address2, CIty, District, State, Pincode, ResidingAddress) values(
-                //    holist = db.Query<HouseOwner>(@"SELECT * FROM HOUSEOWNER").AsList();
-                //}
+                using (db = new SqlConnection(connStr))
+                {
+                    db.Open();
+                    var dic = new Dictionary(string, object)
+                    {
+                        { "Name",houseOwner.Name},
+                        { "LastName",houseOwner.LastName},
+                        { "FatherName",houseOwner.FatherName},
+                        { "MotherName",houseOwner.MotherName},
+                        { "MotherName",houseOwner.MotherName},
+                        { "AadharNo",houseOwner.AadharNo},
+                        { "PhonePrimary",houseOwner.PhonePrimary},
+                        { "Phone2",houseOwner.Phone2},
+                        { "LandLine1",houseOwner.LandLine1},
+                        { "LandLine2",houseOwner.LandLine2},
+                        { "EmailAddress",houseOwner.EmailAddress},
+                        { "Address1",houseOwner.Address1},
+                        { "CIty",houseOwner.CIty},
+                        { "District",houseOwner.District},
+                        { "State",houseOwner.State},
+                        { "Pincode",houseOwner.Pincode},
+                        { "ResidingAddress",houseOwner.ResidingAddress}
+                    };
+                    String sql = @"Insert into houseowner 
+                                (
+                                Name,
+                                LastName,
+                                FatherName, 
+                                MotherName,
+                                AadharNo, 
+                                PhonePrimary, 
+                                Phone2, 
+                                LandLine1,
+                                LandLine2, 
+                                EmailAddress, 
+                                Address1, 
+                                Address2, 
+                                CIty, 
+                                District, 
+                                State, 
+                                Pincode, 
+                                ResidingAddress) 
+                                values(@name,
+                                @LastName,
+                                @FatherName,
+                                @MotherName,
+                                @AadharNo,
+                                @PhonePrimary,
+                                @Phone2,
+                                @LandLine1,
+                                @LandLine2,
+                                @EmailAddress,
+                                @Address1,
+                                @Address2,
+                                @CIty,
+                                @District,
+                                @State,
+                                @Pincode,
+                                @ResidingAddress)";
+                    holist = db.Query<HouseOwner>(@"SELECT * FROM HOUSEOWNER").AsList();
+                }
             }
             catch (Exception ex)
             {
