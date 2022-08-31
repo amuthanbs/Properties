@@ -70,8 +70,8 @@ namespace EnManaiWebApi.Controllers
             try
             {
                 resp.status = Status.Success;
-                List<HouseOwner> h = new List<HouseOwner>() { _houseownerDAO.GetById(id, connStr) };
-                resp.houseOwners = h;
+                //List<HouseOwner> h = new List<HouseOwner>() { _houseownerDAO.GetById(id, connStr) };
+                //resp.houseOwners = h;
                 return Ok(resp);
             }
             catch (Exception ex)

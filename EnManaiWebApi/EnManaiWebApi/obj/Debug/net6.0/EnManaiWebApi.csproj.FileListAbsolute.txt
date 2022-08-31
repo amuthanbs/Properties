@@ -256,9 +256,3 @@ D:\source\Properties\EnManaiWebApi\EnManaiWebApi\obj\Debug\net6.0\EnManaiWebApi.
 D:\source\Properties\EnManaiWebApi\EnManaiWebApi\obj\Debug\net6.0\EnManaiWebApi.dll
 D:\source\Properties\EnManaiWebApi\EnManaiWebApi\obj\Debug\net6.0\refint\EnManaiWebApi.dll
 D:\source\Properties\EnManaiWebApi\EnManaiWebApi\obj\Debug\net6.0\EnManaiWebApi.pdb
-D:\source\Properties\EnManaiWebApi\EnManaiWebApi\bin\Debug\net6.0\EnManaiWebApi.deps.json
-D:\source\Properties\EnManaiWebApi\EnManaiWebApi\bin\Debug\net6.0\EnManaiWebApi.runtimeconfig.json
-D:\source\Properties\EnManaiWebApi\EnManaiWebApi\bin\Debug\net6.0\EnManaiWebApi.dll
-D:\source\Properties\EnManaiWebApi\EnManaiWebApi\bin\Debug\net6.0\EnManaiWebApi.pdb
-D:\source\Properties\EnManaiWebApi\EnManaiWebApi\obj\Debug\net6.0\EnManaiWebApi.genruntimeconfig.cache
-D:\source\Properties\EnManaiWebApi\EnManaiWebApi\obj\Debug\net6.0\ref\EnManaiWebApi.dll
