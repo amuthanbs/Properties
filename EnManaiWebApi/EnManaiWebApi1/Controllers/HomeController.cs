@@ -2,7 +2,7 @@
 using EnManaiWebApi.Model;
 using EnManaiWebApi.Model.Request;
 using EnManaiWebApi.Model.Response;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnManaiWebApi.Controllers
@@ -69,8 +69,9 @@ namespace EnManaiWebApi.Controllers
         #endregion
 
         #region Login
-        [HttpPost]
+        [HttpGet]
         [Route("GetAllLogin")]
+        
         public IActionResult GetAllLogin()
         {
             LoginResponse res = new LoginResponse();

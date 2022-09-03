@@ -10341,11 +10341,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi\\EnManaiWebApi.csproj",
+      "projectUniqueName": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi1\\EnManaiWebApi.csproj",
       "projectName": "EnManaiWebApi",
-      "projectPath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi\\EnManaiWebApi.csproj",
+      "projectPath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi1\\EnManaiWebApi.csproj",
       "packagesPath": "C:\\Users\\amuthanbs\\.nuget\\packages\\",
-      "outputPath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi\\obj\\",
+      "outputPath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiWebApi1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
