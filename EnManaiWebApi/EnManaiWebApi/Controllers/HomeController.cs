@@ -73,8 +73,30 @@ namespace EnManaiWebApi.Controllers
         [Route("GetAllLogin")]
         public IActionResult GetAllLogin()
         {
-            Response res = new Response();
-            _loginDAO.GetAll();
+            LoginResponse res = new LoginResponse();
+            res.logins = _loginDAO.GetAll(connStr) ;
+            res.status = Status.Success;
+            return Ok(res);
+        }
+        [HttpPost]
+        [Route("GetLogin")]
+        public IActionResult GetLogin(LoginRequest loginRequest)
+        {
+            LoginResponse res = new LoginResponse();
+            res.logins = new List<Login>();
+            Login l = _loginDAO.GetLogin(0, loginRequest.UserName, connStr);
+            res.logins.Add(l);
+            res.status = Status.Success;
+            return Ok(res);
+        }
+        [HttpPost]
+        [Route("UpdateLogin")]
+        public IActionResult UpdateLogin(string username)
+        {
+            LoginResponse res = new LoginResponse();
+            res.logins = new List<Login>();
+            Login l = _loginDAO.GetLogin(0, username, connStr);
+            res.logins.Add(l);
             res.status = Status.Success;
             return Ok(res);
         }
@@ -83,10 +105,28 @@ namespace EnManaiWebApi.Controllers
         public IActionResult CreateLogin(Login login)
         {
             LoginResponse res = new LoginResponse();
-            _loginDAO.InsertLogin(login,connStr);
-            res.logins = new List<Login>();
-            res.status = Status.Success;
-            return Ok(res);
+            try
+            {
+                _loginDAO.InsertLogin(login, connStr);
+                res.logins = new List<Login>();
+                res.status = Status.Success;
+                return Ok(res);
+            }catch(Exception ex)
+            {
+                _logger.LogInformation($"Exception :{ex.Message}");
+                res.status = Status.DataError;
+                res.ErrorMessage = ex.Message;
+                return Ok(res);
+            }
+            
+        }
+
+        [HttpPost]
+        [Route("GetLoginHouseDetails")]
+        public IActionResult GetLoginHouseDetails()
+        {
+
+            return null;
         }
         #endregion
     }

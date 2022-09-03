@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nWFn2CCx5MR/c89HF7MqfWvqey2k1qzERu4Nl1S/1sRLSBcCC7//Ku2tUSZPaZ21jdiJG8Cx8fLdIiehEziYqw==",
+  "success": true,
+  "projectFilePath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\amuthanbs\\.nuget\\packages\\bootstrap\\5.2.0\\bootstrap.5.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
