@@ -8,41 +8,73 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EnManaiUI
 build_property.RootNamespace = EnManaiUI
-build_property.ProjectDir = D:\source\Properties\EnManaiWebApi\EnManaiUI\
+build_property.ProjectDir = E:\github\Properties\EnManaiWebApi\EnManaiUI\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\source\Properties\EnManaiWebApi\EnManaiUI
+build_property.MSBuildProjectDirectory = E:\github\Properties\EnManaiWebApi\EnManaiUI
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Index.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Login.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/LandingPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMYW5kaW5nUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/LoggedSearch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dnZWRTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Privacy.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/Error.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/SearchResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hSZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/SearchResult1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hSZXN1bHQxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/_LoginLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/_ViewImports.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/_ViewStart.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/source/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/_Layout.cshtml]
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6z3okhdkxz

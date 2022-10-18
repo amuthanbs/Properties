@@ -81,5 +81,24 @@ namespace EnManaiWebApi.Controllers
                 return Ok(resp);
             }
         }
+
+        [HttpPost, Route("Update")]
+        public IActionResult Update(HouseOwner houseOwner)
+        {
+            HouseOwnersResponse resp = new HouseOwnersResponse();
+            try
+            {
+                resp.status = Status.Success;
+                //List<HouseOwner> h = new List<HouseOwner>() { _houseownerDAO.GetById(id, connStr) };
+                //resp.houseOwners = h;
+                return Ok(resp);
+            }
+            catch (Exception ex)
+            {
+                resp.status = Status.DataError;
+                resp.ErrorMessage = $"Exception Message:{ex.Message}";
+                return Ok(resp);
+            }
+        }
     }
 }

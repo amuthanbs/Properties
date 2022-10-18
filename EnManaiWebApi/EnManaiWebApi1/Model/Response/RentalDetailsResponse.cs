@@ -4,6 +4,11 @@ namespace EnManaiWebApi.Model.Response
 {
     public class RentalDetailsResponse : Response
     {
-        List<RentalDetails> rentalDetails { get; set; }
+        public RentalDetails rentalDetails { get; set; }
+    }
+
+    public class UpdateResponse : Response
+    {
+        public int Count { get; set; }
     }
 }

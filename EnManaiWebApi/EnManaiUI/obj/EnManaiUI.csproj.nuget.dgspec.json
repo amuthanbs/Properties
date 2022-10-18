@@ -1,23 +1,100 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj": {}
+    "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj": {}
   },
   "projects": {
-    "D:\\source\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj": {
+    "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj",
+        "projectUniqueName": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj",
         "projectName": "EnManaiUI",
-        "projectPath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj",
-        "packagesPath": "C:\\Users\\amuthanbs\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\Properties\\EnManaiWebApi\\EnManaiUI\\obj\\",
+        "projectPath": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\EnManaiUI.csproj",
+        "packagesPath": "C:\\Users\\Amuthan\\.nuget\\packages\\",
+        "outputPath": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "e:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amuthanbs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Amuthan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\TokenBased.csproj": {
+                "projectPath": "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\TokenBased.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\TokenBased.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\TokenBased.csproj",
+        "projectName": "TokenBased",
+        "projectPath": "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\TokenBased.csproj",
+        "packagesPath": "C:\\Users\\Amuthan\\.nuget\\packages\\",
+        "outputPath": "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "e:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amuthan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -45,9 +122,25 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "bootstrap": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[5.2.0, )"
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.10, )"
+            },
+            "Microsoft.IdentityModel.JsonWebTokens": {
+              "target": "Package",
+              "version": "[6.24.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.24.0, )"
             }
           },
           "imports": [

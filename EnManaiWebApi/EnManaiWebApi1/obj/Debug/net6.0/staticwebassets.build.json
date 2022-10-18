@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "B7/xM/Y2QphkjdmSkuyvOqCPHC3ku4S4W49NElL5sDI=",
+  "Hash": "qUOFn4QuJ2KFZ4v5Z74Bh5mNDouxpuQgvZ209uIDbcM=",
   "Source": "EnManaiWebApi",
   "BasePath": "_content/EnManaiWebApi",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "E:\\github\\Properties\\EnManaiWebApi\\TokenBased\\TokenBased.csproj",
+      "Version": 2,
+      "Source": "TokenBased",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": []
 }

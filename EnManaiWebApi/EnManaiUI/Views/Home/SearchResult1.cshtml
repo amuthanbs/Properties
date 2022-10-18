@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+    <div class="container">
+        <div class="input-group">
+            <input list="datalistOptionsSR" class="form-control border-end-0 border rounded-pill" type="search" id="search-input-Result">
+            <datalist id="datalistOptionsSR">
+                <option value="Coimbatore" />
+                <option value="Palani" />
+                <option value="Udumelpet" />
+                <option value="Theni" />
+            </datalist>
+            <span class="input-group-append">
+                <button id="btnSearchResult" onclick="SearchByCity()" class="btn btn-primary bg-blue border-bottom-0 border rounded-pill ms-n5" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    <div style="width: 500px;height:300px; border-block-end-style:initial;">
+        <div id="header_idx" style="width: 500px; background: linear-gradient(90deg, rgba(30,30,241,1) 0%, rgba(0,212,255,1) 35%, rgba(255,255,255,1) 100%); ">
+            1 BHK Rent in Palani - 624601
+        </div>
+        <div style="content: " "; display: table; clear: both;">
+            <div style="float: left; width: 33.33%;">
+                600 sqft
+            </div>
+            <div style="float: left; width: 33.33%;">
+                1 BHK
+            </div>
+            <div style="float: left; width: 33.33%;">
+                50000 Deposit
+            </div>
+        </div>
+    </div>
+    </div>
+
+    @section scripts{
+        <script type="text/javascript" src="~/js/search/search.js"></script>
+        @*<script type="text/javascript"  src="~/js/common.js"></script>*@
+    }
+

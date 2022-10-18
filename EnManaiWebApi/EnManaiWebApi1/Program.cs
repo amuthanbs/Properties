@@ -5,6 +5,7 @@ using EnManaiWebApi.Model;
 using EnManaiWebApi.DAO;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using TokenBased.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<IHouseOwnerDAO, HouseOwnerDAO>();
 builder.Services.AddScoped<ILoginDAO, LoginDAO>();
+builder.Services.AddScoped<IHouseOwnerDAO, HouseOwnerDAO>();
+builder.Services.AddScoped<IRentalDetailsDAO, RentalDetailsDAO>();
+builder.Services.AddScoped<ISearchDAO, SearchDAO>();
+builder.Services.AddJWTTokenServices(builder.Configuration);
 //builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
 //   .AddNegotiate();
 

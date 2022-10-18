@@ -16,3 +16,50 @@ html {
 body {
   margin-bottom: 60px;
 }
+.pad-10{
+    padding:10px;
+}
+.pad-5 {
+    padding: 5px;
+}
+.top caption {
+    caption-side: top;
+    text-align: center;
+    margin-top: 1.5em;
+    font-weight:500;
+    font-size:large;
+    color:blue;
+}
+.left {
+    float: left;
+}
+.width-30 {
+    width: 30%;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align:center;
+}
+.centered-element {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.searchPageBorderPadding{
+    padding:300px;
+}
+.searchResultContent {
+    width: auto;
+    height: 300px;
+    border-block-end-style: initial;
+    max-height: 700px;
+    border: solid;
+    border-width: medium;
+    border-color: blue;
+    border-radius: 20px;
+    padding: 10px;
+}
