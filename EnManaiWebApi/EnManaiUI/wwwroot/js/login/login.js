@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     //export { logins };
     var login = null;
-    
+    setLocalRentalData('rentaldetails', null);
 })
 
 function Submit() {
@@ -22,7 +22,7 @@ function Submit() {
 
     $.ajax({
         type: "POST",
-        url: 'https://localhost:7041/api/Home/GetLogin',
+        url: 'https://localhost:7041/api/App/GetLogin',
         //headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
         data: JSON.stringify(loginrequest),
         dataType: 'json',
@@ -35,7 +35,8 @@ function Submit() {
                 if (login.mandatoryVerification) {
                     if (!login.reVerification) {
                         if (login.phoneNumberVerified) {
-                            window.location.href = 'https://localhost:7059/Home/Search';
+                            //window.location.href = 'https://localhost:7059/Home/Search';
+                            window.location.href = 'https://localhost:7059/Home/LoggedSearch';
                         } else {
                             alert('Complete your phone verification');
                             window.location.href = 'https://localhost:7059/';

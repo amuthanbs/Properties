@@ -12,9 +12,11 @@ namespace EnManaiWebApi.DAO
     public interface ILoginDAO
     {
         List<Login> GetAll(string connStr);
-        Login GetLogin(int id, string username, string connStr);
-        int InsertLogin(Login login,string connStr);
+        Login GetLogin(int id, string username, string password, string connStr);
+        int InsertLogin(Login login, string connStr);
         int updateLogin(Login login, string connStr);
+        public Login getUserDetails(int userID, string connStr);
+        public PaymentForTenant GetPayment(int id, string username, string connStr);
     }
     public class LoginDAO : ILoginDAO
     {
@@ -30,7 +32,7 @@ namespace EnManaiWebApi.DAO
                 using (db = new SqlConnection(connStr))
                 {
                     db.Open();
-                     count = db.Query<Login>(sql).AsList();
+                    count = db.Query<Login>(sql).AsList();
                 }
                 return count;
             }
@@ -47,23 +49,29 @@ namespace EnManaiWebApi.DAO
             }
         }
 
-        public Login GetLogin(int id, string username, string connStr)
+        public Login GetLogin(int id, string username, string password,string connStr)
         {
             IDbConnection db = null;
             try
             {
-                string @sql = @"SELECT * FROM LOGIN WHERE username=@username";
+                string @sql = @"SELECT * FROM LOGIN WHERE username=@username and password=@password";
                 var dic = new Dictionary<string, object>()
                 {
-                    {"username",username }
+                    {"username",username },
+                    {"password",password }
                 };
+                //var dicPayment = new Dictionary<string, object>()
+                //{
+                //    {"id",username }
+                //};
                 List<Login> count = new List<Login>();
 
                 using (db = new SqlConnection(connStr))
                 {
                     db.Open();
-                    count = db.Query<Login>(sql,dic).AsList();
+                    count = db.Query<Login>(sql, dic).AsList();
                 }
+                //int id = count.FirstOrDefault().ID;
                 return count.FirstOrDefault();
             }
             catch (Exception ex)
@@ -78,7 +86,82 @@ namespace EnManaiWebApi.DAO
                 }
             }
         }
-        public int InsertLogin(Login login,string connStr)
+        public PaymentForTenant GetPayment(int id, string username, string connStr)
+        {
+            PaymentForTenant paymentForTenant;
+            IDbConnection db = null;
+            try
+            {
+                string @sql = @"SELECT * FROM PaymentForTenant WHERE TenantId=@id";
+                var dic = new Dictionary<string, object>()
+                {
+                    {"id",id}
+                };
+                using (db = new SqlConnection(connStr))
+                {
+                    db.Open();
+                    paymentForTenant = db.Query<PaymentForTenant>(sql, dic).AsList().FirstOrDefault();
+
+                }
+                if(paymentForTenant != null)
+                {
+                    UpdatePaymentStatus(paymentForTenant, connStr);
+                }
+                
+                //int id = count.FirstOrDefault().ID;
+                return paymentForTenant;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (db != null)
+                {
+                    db.Close();
+                }
+            }
+        }
+        private PaymentForTenant UpdatePaymentStatus(PaymentForTenant pft, string connStr)
+        {
+            IDbConnection db = null;
+            try
+            {
+                int it = DateTime.Now.Date.CompareTo(pft.PaymentExpiryDate.Date);
+
+                if (DateTime.Compare(DateTime.Now, pft.PaymentExpiryDate) > 0)
+                {
+                    using (db = new SqlConnection(connStr))
+                    {
+                        db.Open();
+                        string sSql = @"UPDATE PAYMENTFORTENANT SET PaymentExpired=1 WHERE ID=@id";
+                        var dic = new Dictionary<string, object>()
+                    {
+                        {"id",pft.Id}
+                    };
+                        var count = db.Query<Scheme>(sSql, dic).AsList().FirstOrDefault();
+                        //(scheme == null )? return scheme : return null;
+                        pft.PaymentExpired = true;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (db != null)
+                {
+                    db.Close();
+                }
+            }
+            return pft;
+        }
+        public int InsertLogin(Login login, string connStr)
         {
             int count = 0;
             IDbConnection db = null;
@@ -96,7 +179,7 @@ namespace EnManaiWebApi.DAO
                 dic.Add("Emailid", login.EMailId);
 
 
-                Login l = GetLogin(0, dic.FirstOrDefault(x => x.Key == "UserName").Value.ToString(), connStr);
+                Login l = GetLogin(0, dic.FirstOrDefault(x => x.Key == "UserName").Value.ToString(),"", connStr);
                 if (l != null)
                 {
                     throw new Exception($"Username already exists:{login.UserName}");
@@ -118,7 +201,7 @@ namespace EnManaiWebApi.DAO
                 @createdby,
                 @modifiedby)";
 
-                
+
                 using (db = new SqlConnection(connStr))
                 {
                     db.Open();
@@ -132,7 +215,41 @@ namespace EnManaiWebApi.DAO
             {
                 throw ex;
             }
-            finally{
+            finally
+            {
+                if (db != null)
+                {
+                    db.Close();
+                }
+            }
+        }
+
+        public Login getUserDetails(int userID, string connStr)
+        {
+
+            IDbConnection db = null;
+            try
+            {
+                string @sql = @"SELECT * FROM LOGIN WHERE ID=@Id";
+                var dic = new Dictionary<string, object>()
+                {
+                    {"id",@userID }
+                };
+                Login login = new Login();
+
+                using (db = new SqlConnection(connStr))
+                {
+                    db.Open();
+                    login = db.Query<Login>(sql, dic).FirstOrDefault();
+                }
+                return login;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
                 if (db != null)
                 {
                     db.Close();

@@ -1,9 +1,16 @@
 ﻿
 var usr;
+var userType = 'UnRegistered';
 $(document).ready(function () {
     console.log('Seach JS');
     console.log('rentalDetails');
-    usr = JSON.parse(GetLocalData("user"));
+    usr = GetLocalData("user");
+    if (!isNull(usr)) {
+        usr = JSON.parse(usr);
+        userType = 'Logged';
+    } else {
+        userType = 'UnRegistered';
+    }
 });
 //function MyProfile() {
 //    console.log("My Profile");
@@ -31,27 +38,45 @@ function SearchByCity() {
     console.log('Search Text:');
     var search = $('#search-input').val();
   //  alert(search);
-
-    $.ajax({
-        type: "POST",
-        url: 'https://localhost:7041/api/Home/SearchResult?city=' + search + '&encryptedUserCode=' + encodeURIComponent(''),
-        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,  
-        contentType: 'application/json; charset=utf-8',
-        headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
-        success: function (result, xhr, settings) {
-            console.log('Result:', result);
-           // alert('Search Result Success')
-            rentalDetails = result.rentalDetails;
-            setLocalRentalData("rentaldetails",rentalDetails);
-            //console.log(rentalDetails);
-            //SetUpHouseDetail();
-            window.location.href = 'https://localhost:7059/Home/SearchResult?city=' + search;
-            //loadRentalData();
-        },
-        error: function (result, xhr, settings) {
-            alert('API call is not made');
-        }
-    });
+    //NonRegisteredSearchResult
+    if (userType === "UnRegistered") {
+        $.ajax({
+            type: "POST",
+            url: 'https://localhost:7041/api/App/NonRegisteredSearchResult?city=' + search + '&encryptedUserCode=' + encodeURIComponent(''),
+            contentType: 'application/json; charset=utf-8',
+            success: function (result, xhr, settings) {
+                console.log('Result:', result);
+                rentalDetails = result.rentalDetails;
+                setLocalRentalData("rentaldetails", rentalDetails);
+                window.location.href = 'https://localhost:7059/Home/SearchResult?city=' + search;
+            },
+            error: function (result, xhr, settings) {
+                alert('API call is not made');
+            }
+        });
+    } else {
+        $.ajax({
+            type: "POST",
+            url: 'https://localhost:7041/api/App/SearchResult?city=' + search + '&encryptedUserCode=' + encodeURIComponent(''),
+            //data: "city=" + search + "&encryptedUserCode=uiuoi" ,  
+            contentType: 'application/json; charset=utf-8',
+            headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
+            success: function (result, xhr, settings) {
+                console.log('Result:', result);
+                // alert('Search Result Success')
+                rentalDetails = result.rentalDetails;
+                setLocalRentalData("rentaldetails", rentalDetails);
+                //console.log(rentalDetails);
+                //SetUpHouseDetail();
+                window.location.href = 'https://localhost:7059/Home/LoggedSearch?city=' + search;
+                
+            },
+            error: function (result, xhr, settings) {
+                alert('API call is not made');
+            }
+        });
+    }
+    
 }
 //function loadRentalData() {
 //    console.log(rentalDetails);

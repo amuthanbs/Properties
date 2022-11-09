@@ -26,7 +26,7 @@ namespace EnManaiUI.Controllers
             return View();
         }
 
-        public IActionResult LoggedSearch()
+        public IActionResult LoggedSearch(string city)
         {
             return View();
         }
@@ -51,9 +51,9 @@ namespace EnManaiUI.Controllers
         {
             return View();
         }
-        public IActionResult SearchResult(string city)
-        {
-            return View();
-        }
+        //public IActionResult SearchResult(string city)
+        //{
+        //    return View();
+        //}
     }
 }

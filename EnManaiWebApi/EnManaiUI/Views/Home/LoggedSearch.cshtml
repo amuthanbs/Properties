@@ -1,8 +1,30 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "LoggedSearch";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
+@*searchPageBorderPadding*@
+<div id="main" class="container searchPageBorderPadding">
+    <div class="input-group">
+        <input list="datalistOptions" class="form-control border-end-0 border rounded-pill" type="search" id="search-input">
+        <datalist id="datalistOptions">
+            <option value="Coimbatore" />
+            <option value="Palani" />
+            <option value="Udumelpet" />
+            <option value="Theni" />
+        </datalist>
+        <span class="input-group-append">
+            @*onclick="SearchByCity()*@
+            <button id="btnSearch" onclick="SearchByCity()" class="btn btn-primary bg-blue border-bottom-0 border rounded-pill ms-n5" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+    <div class="rentals pa-20">
+    </div>
+</div>
 
-<h1>LoggedSearch</h1>
+@section scripts{
+    <script type="text/javascript" src="~/js/search/searchResult.js"></script>
+    <script type="text/javascript" src="~/js/search/search.js"></script>
+    }
 

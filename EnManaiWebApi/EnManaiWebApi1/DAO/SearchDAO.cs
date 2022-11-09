@@ -8,7 +8,7 @@ namespace EnManaiWebApi.DAO
 {
     public interface ISearchDAO
     {
-        public List<RentalHouseDetail> BasicSearch(string city, string connStr);
+        public List<RentalHouseDetail> BasicSearch(int id,string city, string connStr);
         //public HouseOwner GetById(int id, string connStr);
         //public HouseOwner Save(HouseOwner houseOwner, string connStr);
         //public HouseOwner Create(HouseOwner houseOwner, string connStr);
@@ -16,7 +16,7 @@ namespace EnManaiWebApi.DAO
     }
     public class SearchDAO : ISearchDAO
     {
-        public List<RentalHouseDetail> BasicSearch(string city, string connStr)
+        public List<RentalHouseDetail> BasicSearch(int id=0,string city="", string connStr="")
         {
             //string[] splt = city.Split(',');
             //if (splt.Length == 1)
@@ -54,15 +54,17 @@ namespace EnManaiWebApi.DAO
                     {
                         db.Open();
                         IEnumerable<dynamic> result = db.Query("EM_RentalHouseDetails", dic, null, true, null, CommandType.StoredProcedure);
-                        foreach(dynamic item in result)
+                        foreach (dynamic item in result)
                         {
+
                             RentalHouseDetail rd = ConvertToObject(item);
+                            rd.PaymentActive = GetPaymentStatus(rd.Id, rd.HouseOwnerId, connStr);
                             rentalHouselist.Add(rd);
                         }
                         //holist = db.Query<HouseOwner>(@"SELECT * FROM HOUSEOWNER where id = @id", dic).AsList();
                     }
-                    
-                    return rentalHouselist ;
+
+                    return rentalHouselist;
                 }
                 catch (Exception ex)
                 {
@@ -74,8 +76,43 @@ namespace EnManaiWebApi.DAO
                 }
             }
         }
+
+        private bool GetPaymentStatus(int id, int houseOwnerId, string connStr)
+        {
+
+            IDbConnection db = null;
+            List<RentalHouseDetail> rentalHouselist = new List<RentalHouseDetail>();
+            try
+            {
+                using (db = new SqlConnection(connStr))
+                {
+                    var dic = new Dictionary<string, object>
+                    {
+                        { "id", id },
+                        { "houseOwnerId",houseOwnerId}
+                    };
+                    string sql = @"SELECT count(*) FROM [PaymentForRent] WHERE RentHouseId = @id and houseownerid = @houseOwnerId";
+                    int? count = db.Query<int>(sql, dic).FirstOrDefault();
+                    if (count != null && count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return false;
+        }
+
         private RentalHouseDetail ConvertToObject(dynamic item)
         {
+
             RentalHouseDetail rhd = new RentalHouseDetail();
             rhd.Id = item.Id;
             rhd.HouseOwnerId = item.HouseOwnerId;
@@ -87,9 +124,9 @@ namespace EnManaiWebApi.DAO
             rhd.City = item.City;
             rhd.District = item.District;
             rhd.State = item.State;
-                rhd.Pincode = item.Pincode;
+            rhd.Pincode = item.Pincode;
             rhd.Floor = item.Floor;
-                rhd.Vasuthu = item.Vasuthu;
+            rhd.Vasuthu = item.Vasuthu;
             rhd.CoOperationWater = item.CoOperationWater;
             rhd.BoreWater = item.BoreWater;
             rhd.SeparateEB = item.SeparateEB;
@@ -104,9 +141,9 @@ namespace EnManaiWebApi.DAO
             rhd.RentTo = item.RentTo;
             rhd.PetsAllowed = item.PetsAllowed;
             rhd.PaymentActive = item.PaymentActive;
-            
+
             return rhd;
         }
     }
-    
+
 }

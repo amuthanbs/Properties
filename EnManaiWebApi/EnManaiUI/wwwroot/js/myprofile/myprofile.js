@@ -12,7 +12,7 @@ function GetRentalDetails() {
     debugger;
     $.ajax({
         type: "POST",
-        url: 'https://localhost:7041/api/Home/GetRentalDetail?',
+        url: 'https://localhost:7041/api/App/GetRentalDetail?',
         data: '? id = ' + usr.logins[0].houseOwnerId,
         headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
         //dataType: 'json',
@@ -246,7 +246,7 @@ function saveRentalHouseDetails() {
 
     $.ajax({
         type: "POST",
-        url: 'https://localhost:7041/api/Home/UpdateRentalDetail',
+        url: 'https://localhost:7041/api/App/UpdateRentalDetail',
         data: JSON.stringify(saveRentalHouseDetail),
         dataType: 'json',
         contentType: 'application/json',
