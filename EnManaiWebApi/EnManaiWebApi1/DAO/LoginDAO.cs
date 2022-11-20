@@ -200,14 +200,10 @@ namespace EnManaiWebApi.DAO
                 @modifieddate,
                 @createdby,
                 @modifiedby)";
-
-
                 using (db = new SqlConnection(connStr))
                 {
                     db.Open();
-
                     count = db.Execute(sql, dic);
-
                 }
                 return count;
             }

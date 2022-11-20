@@ -48,12 +48,13 @@ namespace EnManaiWebApi.DAO
                             {"action" ,0 },
                             {"RentFrom" ,null },
                             {"RentTo",null },
-                            {"PetsAllowed" ,0 }
+                            {"PetsAllowed" ,0 },
+                        {"PaymentActive",true }
                         };
                     using (db = new SqlConnection(connStr))
                     {
                         db.Open();
-                        IEnumerable<dynamic> result = db.Query("EM_RentalHouseDetails", dic, null, true, null, CommandType.StoredProcedure);
+                        IEnumerable<dynamic> result = db.Query("EM_RentalHouseDetails", dic,null,true,null, CommandType.StoredProcedure);
                         foreach (dynamic item in result)
                         {
 

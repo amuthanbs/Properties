@@ -57,7 +57,7 @@ function SearchByCity() {
     } else {
         $.ajax({
             type: "POST",
-            url: 'https://localhost:7041/api/App/SearchResult?city=' + search + '&encryptedUserCode=' + encodeURIComponent(''),
+            url: 'https://localhost:7041/api/App/SearchResult?city=' + search + '&encryptedUserCode=' + encodeURIComponent('') + '&id=' + usr.logins[0].id,
             //data: "city=" + search + "&encryptedUserCode=uiuoi" ,  
             contentType: 'application/json; charset=utf-8',
             headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
