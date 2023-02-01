@@ -520,6 +520,7 @@ D:\source\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\refint\EnMana
 D:\source\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\EnManaiWebApi.pdb
 D:\source\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\EnManaiWebApi.genruntimeconfig.cache
 D:\source\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\ref\EnManaiWebApi.dll
+E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.dll
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\TokenBased.deps.json
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\TokenBased.runtimeconfig.json
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\TokenBased.staticwebassets.runtime.json
@@ -529,8 +530,6 @@ E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\appsettings.j
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.exe
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.deps.json
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.runtimeconfig.json
-E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.dll
-E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.pdb
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\Dapper.dll
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\Humanizer.dll
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\MessagePack.dll
@@ -803,4 +802,6 @@ E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\EnManaiWebApi
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\refint\EnManaiWebApi.dll
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\EnManaiWebApi.pdb
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\EnManaiWebApi.genruntimeconfig.cache
+E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\EnManaiWebApi.pdb
 E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\obj\Debug\net6.0\ref\EnManaiWebApi.dll
+E:\github\Properties\EnManaiWebApi\EnManaiWebApi1\bin\Debug\net6.0\RestSharp.dll

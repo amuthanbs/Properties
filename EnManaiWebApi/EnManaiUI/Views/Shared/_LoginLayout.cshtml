@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/EnManaiUI.styles.css" asp-append-version="true" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />*@
 </head>
 <body>
     <header>
@@ -25,7 +26,7 @@
                             <a class="nav-link text-dark" id="myprofile" asp-controller="Home" asp-action="LandingPage">My Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Sign Out</a>
+                            <a class="nav-link" id="SignOut" href="javascript:void(0)" onclick="Signout()">Sign Out</a>
                         </li>
                     </ul>
                 </div>
@@ -43,7 +44,9 @@
             &copy; 2022 - EnManaiUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>*@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>

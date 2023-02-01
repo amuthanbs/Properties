@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nEry+UvqHLeHsdEdk8l2+wtiAq4wBv5zlYeKjmwqRHA=",
+  "Hash": "IcEmSlr2zkZ+eBnACJCoyAekfx9BOfcFSNhPm/rhma8=",
   "Source": "EnManaiUI",
   "BasePath": "_content/EnManaiUI",
   "Mode": "Default",
@@ -894,6 +894,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\myprofile\\myprofile.js"
+    },
+    {
+      "Identity": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\wwwroot\\js\\myprofile\\SMSVerification.js",
+      "SourceId": "EnManaiUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\wwwroot\\",
+      "BasePath": "_content/EnManaiUI",
+      "RelativePath": "js/myprofile/SMSVerification.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\myprofile\\SMSVerification.js"
     },
     {
       "Identity": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiUI\\wwwroot\\js\\Search\\search.js",

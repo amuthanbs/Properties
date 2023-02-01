@@ -24,6 +24,7 @@ builder.Services.AddScoped<ILoginDAO, LoginDAO>();
 builder.Services.AddScoped<IHouseOwnerDAO, HouseOwnerDAO>();
 builder.Services.AddScoped<IRentalDetailsDAO, RentalDetailsDAO>();
 builder.Services.AddScoped<ISearchDAO, SearchDAO>();
+builder.Services.AddScoped<ISMSVerificationDAO, SMSVerificationDAO>();
 builder.Services.AddJWTTokenServices(builder.Configuration);
 //builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
 //   .AddNegotiate();

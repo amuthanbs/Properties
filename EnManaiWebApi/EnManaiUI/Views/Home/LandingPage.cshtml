@@ -1,519 +1,530 @@
 ﻿@{
-    ViewData["Title"] = "LandingPage";
+    ViewData["Title"] = "Landing Page";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 @{
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="text" id="txtSMSCode" placeholder="Enter Verification Code"/>
+              </div>
+              <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" onclick="modalClose()">Close</button>
+                <button type="button" class="btn btn-primary" onclick="VerifySMS(this)">SendSMS</button>
+              </div>
+            </div>
+          </div>
+    </div>
     <!-- Pills navs ex1-tab-1 -->
     <ul class="nav nav-pills mb-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active"
-               id="myProfile"
-               data-mdb-toggle="pill"
-               href="#myprofile"
-               role="tab"
-               aria-controls="ex1-pills-1"
-               aria-selected="true">My Profile</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link"
-               id="houseDetails"
-               data-mdb-toggle="pill"
-               href="#housedetails"
-               role="tab"
-               aria-controls="ex1-pills-2"
-               aria-selected="false">House Details</a>
-        </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active"
+                       id="myProfile"
+                       data-mdb-toggle="pill"
+                       href="#myprofile"
+                       role="tab"
+                       aria-controls="ex1-pills-1"
+                       aria-selected="true">My Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link"
+                       id="houseDetails"
+                       data-mdb-toggle="pill"
+                       href="#housedetails"
+                       role="tab"
+                       aria-controls="ex1-pills-2"
+                       aria-selected="false">House Details</a>
+                </li>
     </ul>
     <!-- Pills navs -->
     <!-- Pills content -->
     <div class="tab-content" id="ex1-content">
-        <div class="tab-pane fade show active"
-             id="myprofile"
-             role="tabpanel"
-             aria-labelledby="My Profile">
-            <form>
-                <div>
-                    <input type="hidden" id="txtRecordId">
-                </div>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="UserName">User Name</span>
-                    </div>
-                    <input type="text" placeholder="User Name" size="50" class="form-control" id="txtUserName" aria-describedby="User Name">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="PhoneNumber">Phone Number</span>
-                    </div>
-                    <input type="text" placeholder="Phone Number" size="50" class="form-control" id="txtPhoneNumber" aria-describedby="Phone Number">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="Email Id">Email Id</span>
-                    </div>
-                    <input type="text" placeholder="Email Id" size="50" class="form-control" id="txtEmailId" aria-describedby="Email Id">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" id="chkPhoneNumberVerified" aria-label="Phone Number Verified">
+                <div class="tab-pane fade "
+                     id="myprofile"
+                     role="tabpanel"
+                     href="#myprofile"
+                     aria-labelledby="My Profile">
+                    <button type="button" class="btn btn-primary" onclick="SMSVerification(this)">SMS Verification</button>
+                    <form>
+                        <div>
+                            <input type="hidden" id="txtRecordId">
                         </div>
-                    </div>
-                    <label class="form-check-label" style="padding-left: 10px;" for="chkPhoneNumberVerified"> Phone Number Verified</label>
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" id="chkEmailVerified" aria-label="Email Verified">
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkEmailVerified"> Email Verified</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="UserName">User Name</span>
+                            </div>
+                            <input type="text" placeholder="User Name" size="50" class="form-control" id="txtUserName" aria-describedby="User Name">
                         </div>
-                    </div>
-                    @*<input type="text" class="form-control" readonly value="Email Verified" aria-label="Email Verified">*@
-                </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="Re-VerifictionTime">Re-Verifiction Time</span>
-                    </div>
-                    <input type="text" placeholder="Re-Verifiction Time" size="50" class="form-control" id="txtReVerifictionTime" aria-describedby="Re-Verifiction Time">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="PhoneNumberVerifiedDate">PhoneNumber Verified Date</span>
-                    </div>
-                    <input type="text" placeholder="PhoneNumber Verified Date" id="txtPhoneNumberVerifiedDate" size="50" class="form-control" id="txtPhoneNumberVerifiedDate" aria-describedby="PhoneNumber Verified Date">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="EmailNumberVerifiedDate">PhoneNumber Verified Date</span>
-                    </div>
-                    <input type="text" placeholder="Email Verified Date" id="txtEmailVerifiedDate" size="50" class="form-control" id="txtEmailVerifiedDate" aria-describedby="Email Verified Date">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" id="chkMandatoryVerification" aria-label="Mandatory Verification">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="PhoneNumber">Phone Number</span>
+                            </div>
+                            <input type="text" placeholder="Phone Number" size="50" class="form-control" id="txtPhoneNumber" aria-describedby="Phone Number">
                         </div>
-                    </div>
-                    <label class="form-check-label" style="padding-left: 10px;" for="chkMandatoryVerification"> Mandatory Verification</label>
-                </div>
 
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <input type="checkbox" id="chkReVerification" value="Re-Verification" aria-label="Re-Verification">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="Email Id">Email Id</span>
+                            </div>
+                            <input type="text" placeholder="Email Id" size="50" class="form-control" id="txtEmailId" aria-describedby="Email Id">
                         </div>
-                    </div>
-                    <label class="form-check-label" style="padding-left: 10px;" for="chkReVerification"> Re-Verification</label>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" id="chkPhoneNumberVerified" aria-label="Phone Number Verified">
+                                </div>
+                            </div>
+                            <label class="form-check-label" style="padding-left: 10px;" for="chkPhoneNumberVerified"> Phone Number Verified</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" id="chkEmailVerified" aria-label="Email Verified">
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkEmailVerified"> Email Verified</label>
+                                </div>
+                            </div>
+                            @*<input type="text" class="form-control" readonly value="Email Verified" aria-label="Email Verified">*@
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="Re-VerifictionTime">Re-Verifiction Time</span>
+                            </div>
+                            <input type="text" placeholder="Re-Verifiction Time" size="50" class="form-control" id="txtReVerifictionTime" aria-describedby="Re-Verifiction Time">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="PhoneNumberVerifiedDate">PhoneNumber Verified Date</span>
+                            </div>
+                            <input type="text" placeholder="PhoneNumber Verified Date" id="txtPhoneNumberVerifiedDate" size="50" class="form-control" id="txtPhoneNumberVerifiedDate" aria-describedby="PhoneNumber Verified Date">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="EmailNumberVerifiedDate">PhoneNumber Verified Date</span>
+                            </div>
+                            <input type="text" placeholder="Email Verified Date" id="txtEmailVerifiedDate" size="50" class="form-control" id="txtEmailVerifiedDate" aria-describedby="Email Verified Date">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" id="chkMandatoryVerification" aria-label="Mandatory Verification">
+                                </div>
+                            </div>
+                            <label class="form-check-label" style="padding-left: 10px;" for="chkMandatoryVerification"> Mandatory Verification</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input type="checkbox" id="chkReVerification" value="Re-Verification" aria-label="Re-Verification">
+                                </div>
+                            </div>
+                            <label class="form-check-label" style="padding-left: 10px;" for="chkReVerification"> Re-Verification</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="SaveProfileDetails()">Save</button>
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-primary" onclick="SaveProfileDetails()">Save</button>
-            </form>
+                <div class="tab-pane fade pad-10 show active" id="housedetails" role="tabpanel" aria-labelledby="House Details">
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="FirstName">First Name</span>
+                            </div>
+                            <input type="text" placeholder="First Name" size="50" class="form-control" id="txtFirstName" aria-describedby="First Name">
+                        </div>
 
-        </div>
-        <div class="tab-pane fade pad-10" id="housedetails" role="tabpanel" aria-labelledby="House Details">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="LastName">Last Name</span>
+                            </div>
+                            <input type="text" placeholder="Last Name" size="50" class="form-control" id="txtLastName" aria-describedby="Last Name">
+                        </div>
 
-            @*<form>
-        <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="text" class="form-control" id="txtFirstName" aria-describedby="First Name" placeholder="First Name">
-        </div>
-        </form>*@
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="FatherName">Father Name</span>
+                            </div>
+                            <input type="text" placeholder="Father Name" size="50" class="form-control" id="txtFatherName" aria-describedby="Father Name">
+                        </div>
 
-            <form>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="FirstName">First Name</span>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="MotherName">Mother Name</span>
+                            </div>
+                            <input type="text" placeholder="Mother Name" size="50" class="form-control" id="txtMotherName" aria-describedby="Mother Name">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="PrimaryPhone">Primary Phone</span>
+                            </div>
+                            <input type="text" placeholder="Primary Phone" size="50" class="form-control" id="txtPrimaryPhone" aria-describedby="Primary Phone">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="Phone2">Phone2</span>
+                            </div>
+                            <input type="text" placeholder="Phone2" size="50" class="form-control" id="txtPhone2" aria-describedby="Phone2">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="LandLine1">Land Line1</span>
+                            </div>
+                            <input type="text" placeholder="Land Line1" size="50" class="form-control" id="txtLandLine1" aria-describedby="Land Line1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="LandLine2">Land Line2</span>
+                            </div>
+                            <input type="text" placeholder="Land Line2" size="50" class="form-control" id="txtLandLine2" aria-describedby="Land Line2">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="EmailAddress">Email Address</span>
+                            </div>
+                            <input type="email" placeholder="Email Address" size="50" class="form-control" id="txtEmailAddress" aria-describedby="Email Address">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="Address1">Address1</span>
+                            </div>
+                            <input type="text" placeholder="Address1" size="50" class="form-control" id="txtAddress1" aria-describedby="Address1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="Address2">Address2</span>
+                            </div>
+                            <input type="email" placeholder="Address2" size="50" class="form-control" id="txtAddress2" aria-describedby="Address2">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="City">City</span>
+                            </div>
+                            <input type="email" placeholder="City" size="50" class="form-control" id="txtCity" aria-describedby="City">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="District">District</span>
+                            </div>
+                            <input type="email" placeholder="District" size="50" class="form-control" id="txtDistrict" aria-describedby="District">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="State">State</span>
+                            </div>
+                            <input type="email" placeholder="State" size="50" class="form-control" id="txtState" aria-describedby="State">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="Pincode">Pincode</span>
+                            </div>
+                            <input type="email" placeholder="Pincode" size="50" class="form-control" id="txtPincode" aria-describedby="Pincode">
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="SaveHouseDetails()">Submit</button>
+                    </form>
+                <div class="pad-10">
+                        <table id="tblRentalHouse" class="display top" style="width:100%">
+                            <caption>
+                                <div class="left width-50 pad-5"><button type="button" class="btn btn-outline-primary" onclick="addNewRentalHouseDetails()">+ Add New Rental House</button></div>
+                                <div style="padding-top: 15px;text-align: center;">List of Rental House Details</div>
+                            </caption>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>HouseOwnerId</th>
+                                    <th>FlatNoOrFloor</th>
+                                    <th>Address1</th>
+                                    <th>Address2</th>
+                                    <th>Address3</th>
+                                    <th>Area Or Nagar</th>
+                                    <th>City</th>
+                                    <th>District</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
-                    <input type="text" placeholder="First Name" size="50" class="form-control" id="txtFirstName" aria-describedby="First Name">
                 </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="LastName">Last Name</span>
-                    </div>
-                    <input type="text" placeholder="Last Name" size="50" class="form-control" id="txtLastName" aria-describedby="Last Name">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="FatherName">Father Name</span>
-                    </div>
-                    <input type="text" placeholder="Father Name" size="50" class="form-control" id="txtFatherName" aria-describedby="Father Name">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="MotherName">Mother Name</span>
-                    </div>
-                    <input type="text" placeholder="Mother Name" size="50" class="form-control" id="txtMotherName" aria-describedby="Mother Name">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="PrimaryPhone">Primary Phone</span>
-                    </div>
-                    <input type="text" placeholder="Primary Phone" size="50" class="form-control" id="txtPrimaryPhone" aria-describedby="Primary Phone">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="Phone2">Phone2</span>
-                    </div>
-                    <input type="text" placeholder="Phone2" size="50" class="form-control" id="txtPhone2" aria-describedby="Phone2">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="LandLine1">Land Line1</span>
-                    </div>
-                    <input type="text" placeholder="Land Line1" size="50" class="form-control" id="txtLandLine1" aria-describedby="Land Line1">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="LandLine2">Land Line2</span>
-                    </div>
-                    <input type="text" placeholder="Land Line2" size="50" class="form-control" id="txtLandLine2" aria-describedby="Land Line2">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="EmailAddress">Email Address</span>
-                    </div>
-                    <input type="email" placeholder="Email Address" size="50" class="form-control" id="txtEmailAddress" aria-describedby="Email Address">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="Address1">Address1</span>
-                    </div>
-                    <input type="text" placeholder="Address1" size="50" class="form-control" id="txtAddress1" aria-describedby="Address1">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="Address2">Address2</span>
-                    </div>
-                    <input type="email" placeholder="Address2" size="50" class="form-control" id="txtAddress2" aria-describedby="Address2">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="City">City</span>
-                    </div>
-                    <input type="email" placeholder="City" size="50" class="form-control" id="txtCity" aria-describedby="City">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="District">District</span>
-                    </div>
-                    <input type="email" placeholder="District" size="50" class="form-control" id="txtDistrict" aria-describedby="District">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="State">State</span>
-                    </div>
-                    <input type="email" placeholder="State" size="50" class="form-control" id="txtState" aria-describedby="State">
-                </div>
-
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="Pincode">Pincode</span>
-                    </div>
-                    <input type="email" placeholder="Pincode" size="50" class="form-control" id="txtPincode" aria-describedby="Pincode">
-                </div>
-                <button type="submit" class="btn btn-primary" onclick="SaveHouseDetails()">Submit</button>
-            </form>
-
-            <div class="pad-10">
-                
-                <table id="tblRentalHouse" class="display top" style="width:100%">
-                    <caption>
-                        <div class="left width-50 pad-5"><button type="button" class="btn btn-outline-primary" onclick="addNewRentalHouseDetails()">+ Add New Rental House</button></div>
-                        <div style="padding-top: 15px;text-align: center;">List of Rental House Details</div>
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>HouseOwnerId</th>
-                            <th>FlatNoOrFloor</th>
-                            <th>Address1</th>
-                            <th>Address2</th>
-                            <th>Address3</th>
-                            <th>Area Or Nagar</th>
-                            <th>City</th>
-                            <th>District</th>
-                            <th>State</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
     </div>
 
     <div class="modal fade" id="rentalHouseModal" tabindex="-1" role="dialog" style=" overflow-y: initial;" aria-labelledby="Rental House Modal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="rentalHouseLabel">Rental House Detail</h5>
-                    <button type="button" onclick="modalClose()" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="rentalHouseLabel">Rental House Detail</h5>
+                            <button type="button" onclick="modalClose()" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body" style="height: 80vh;overflow-y: auto;">
+                            <div>
+                                <input type="hidden" id="txtRentalId">
+                                <input type="hidden" id="txtHouseOwnerId">
+                            </div>
+                            <!-- Flat No Or Door No -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="flatNoOrDoorNo">Flat No Or Door No</span>
+                                </div>
+                                <input type="text" placeholder="Flat No Or Door No" size="50" class="form-control" id="txtRentalFlatNoOrDoorNo" aria-describedby="Flat No Or Door No">
+                            </div>
+
+                            <!-- Address 1 -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="address1">Address 1</span>
+                                </div>
+                                <input type="text" placeholder="Address 1" size="50" class="form-control" id="txtRentalAddress1" aria-describedby="Address 1">
+                            </div>
+
+                            <!-- Address 2 -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="address2">Address 2</span>
+                                </div>
+                                <input type="text" placeholder="Address 2" size="50" class="form-control" id="txtRentalAddress2" aria-describedby="Address 2">
+                            </div>
+
+                            <!-- Address 3 -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="address3">Address 3</span>
+                                </div>
+                                <input type="text" placeholder="Address 3" size="50" class="form-control" id="txtRentalAddress3" aria-describedby="Address 2">
+                            </div>
+
+                            <!-- Area or Nagar -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="areaOrNagar">Area Or Nagar</span>
+                                </div>
+                                <input type="text" placeholder="Area Or Nagar" size="50" class="form-control" id="txtRentalareaOrNagar" aria-describedby="Area Or Nagar">
+                            </div>
+
+                            <!-- City -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="city">City</span>
+                                </div>
+                                <input type="text" placeholder="City" size="50" class="form-control" id="txtRentalCity" aria-describedby="City">
+                            </div>
+
+                            <!-- District -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="district">District</span>
+                                </div>
+                                <input type="text" placeholder="District" size="50" class="form-control" id="txtRentalDistrict" aria-describedby="District">
+                            </div>
+
+                            <!-- State -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="state">State</span>
+                                </div>
+                                <input type="text" placeholder="State" size="50" class="form-control" id="txtRentalState" aria-describedby="State">
+                            </div>
+
+                            <!-- Pincode -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="pincode">Pincode</span>
+                                </div>
+                                <input type="text" placeholder="Pincode" size="50" class="form-control" id="txtRentalPincode" aria-describedby="Pincode">
+                            </div>
+
+                            <!-- Floor -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="floor">Floor</span>
+                                </div>
+                                <input type="text" placeholder="Floor" size="50" class="form-control" id="txtRentalFloor" aria-describedby="Floor">
+                            </div>
+
+                            <!-- coOperationWater and Vasuthu -->
+                            <div style="width: 50%; float:left;padding:5px">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalcoOperationWater" aria-label="Co-Operation Water">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalcoOperationWater"> Co-Operation Water </label>
+                                </div>
+                            </div>
+
+                            <div style="width: 50%; float:right;padding:5px;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalVasuthu" aria-label="Vasuthu">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalVasuthu"> Vasuthu </label>
+                                </div>
+                            </div>
+
+                            <!-- boreWater and separateEB -->
+                            <div style="width: 50%; float:left;padding:5px">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalboreWater" aria-label="Bore Water">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalboreWater"> Bore Water</label>
+                                </div>
+                            </div>
+
+                            <div style="width: 50%; float:right;padding:5px;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalseparateEB" aria-label="Separate EB">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalseparateEB"> Separate EB </label>
+                                </div>
+                            </div>
+
+                            <!-- twoWheelerParking and fourWheelerParking -->
+                            <div style="width: 50%; float:left;padding:5px">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentaltwoWheelerParking" aria-label="Two Wheeler Parking">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentaltwoWheelerParking"> Two Wheeler Parking</label>
+                                </div>
+                            </div>
+
+                            <div style="width: 50%; float:right;padding:5px;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalfourWheelerParking" aria-label="Four Wheeler Parking">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalfourWheelerParking"> Four Wheeler Parking </label>
+                                </div>
+                            </div>
+
+                            <!-- Apartment and ApartmentFloor-->
+                            <div style="width: 50%; float:left;padding:5px">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalApartment" aria-label="Apartment">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalApartment"> Apartment</label>
+                                </div>
+                            </div>
+
+                            <div style="width: 50%; float:right;padding:5px;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="rentalApartmentFloor">Apartment Floor</span>
+                                    </div>
+                                    <input type="text" placeholder="Apartment Floor" size="50" class="form-control" id="txtrentalApartmentFloor" aria-describedby="Apartment Floor">
+                                </div>
+                            </div>
+
+
+
+                            <!-- rentalOccupied and petsAllowed -->
+                            <div style="width: 50%; float:left;padding:5px">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkrentalOccupied" aria-label="Rental Occupied">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkrentalOccupied"> Rental Occupied</label>
+                                </div>
+                            </div>
+
+                            <div style="width: 50%; float:right;padding:5px;">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <input type="checkbox" id="chkRentalpetsAllowed" aria-label="Pets Allowed">
+                                        </div>
+                                    </div>
+                                    <label class="form-check-label" style="padding-left: 10px;" for="chkRentalpetsAllowed"> Pets Allowed </label>
+                                </div>
+                            </div>
+
+                            <!-- Rental Amount From  and Rental Amount To -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="rentalAmountFrom">Rental Amount From</span>
+                                </div>
+                                <input type="text" placeholder="Rental Amount From" size="50" class="form-control" id="txtRentalRentalAmountFrom" aria-describedby="Rental Amount From">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="rentalAmountTo">Rental Amount To</span>
+                                </div>
+                                <input type="text" placeholder="Rental Amount To" size="50" class="form-control" id="txtRentalRentalAmountTo" aria-describedby="Rental Amount To">
+                            </div>
+
+
+                            <!-- separateHouse and houseOwnerResidingInSameBuilding -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" id="chkRentalhouseOwnerResidingInSameBuilding" aria-label="House Owner Residing In Same Building">
+                                    </div>
+                                </div>
+                                <label class="form-check-label" style="padding-left: 10px;" for="chkRentalhouseOwnerResidingInSameBuilding"> House Owner Residing In Same Building </label>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input type="checkbox" id="chkRentalseparateHouse" aria-label="Separate House">
+                                    </div>
+                                </div>
+                                <label class="form-check-label" style="padding-left: 10px;" for="chkRentalseparateHouse"> Separate House</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="modalClose()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="saveRentalHouseDetails()" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="modal-body" style="height: 80vh;overflow-y: auto;">
-                    <div>
-                        <input type="hidden" id="txtRentalId">
-                        <input type="hidden" id="txtHouseOwnerId">
-                    </div>
-                    <!-- Flat No Or Door No -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="flatNoOrDoorNo">Flat No Or Door No</span>
-                        </div>
-                        <input type="text" placeholder="Flat No Or Door No" size="50" class="form-control" id="txtRentalFlatNoOrDoorNo" aria-describedby="Flat No Or Door No">
-                    </div>
-
-                    <!-- Address 1 -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="address1">Address 1</span>
-                        </div>
-                        <input type="text" placeholder="Address 1" size="50" class="form-control" id="txtRentalAddress1" aria-describedby="Address 1">
-                    </div>
-
-                    <!-- Address 2 -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="address2">Address 2</span>
-                        </div>
-                        <input type="text" placeholder="Address 2" size="50" class="form-control" id="txtRentalAddress2" aria-describedby="Address 2">
-                    </div>
-
-                    <!-- Address 3 -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="address3">Address 3</span>
-                        </div>
-                        <input type="text" placeholder="Address 3" size="50" class="form-control" id="txtRentalAddress3" aria-describedby="Address 2">
-                    </div>
-
-                    <!-- Area or Nagar -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="areaOrNagar">Area Or Nagar</span>
-                        </div>
-                        <input type="text" placeholder="Area Or Nagar" size="50" class="form-control" id="txtRentalareaOrNagar" aria-describedby="Area Or Nagar">
-                    </div>
-
-                    <!-- City -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="city">City</span>
-                        </div>
-                        <input type="text" placeholder="City" size="50" class="form-control" id="txtRentalCity" aria-describedby="City">
-                    </div>
-
-                    <!-- District -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="district">District</span>
-                        </div>
-                        <input type="text" placeholder="District" size="50" class="form-control" id="txtRentalDistrict" aria-describedby="District">
-                    </div>
-
-                    <!-- State -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="state">State</span>
-                        </div>
-                        <input type="text" placeholder="State" size="50" class="form-control" id="txtRentalState" aria-describedby="State">
-                    </div>
-
-                    <!-- Pincode -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="pincode">Pincode</span>
-                        </div>
-                        <input type="text" placeholder="Pincode" size="50" class="form-control" id="txtRentalPincode" aria-describedby="Pincode">
-                    </div>
-
-                    <!-- Floor -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="floor">Floor</span>
-                        </div>
-                        <input type="text" placeholder="Floor" size="50" class="form-control" id="txtRentalFloor" aria-describedby="Floor">
-                    </div>
-
-                    <!-- coOperationWater and Vasuthu -->
-                    <div style="width: 50%; float:left;padding:5px">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalcoOperationWater" aria-label="Co-Operation Water">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalcoOperationWater"> Co-Operation Water </label>
-                        </div>
-                    </div>
-
-                    <div style="width: 50%; float:right;padding:5px;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalVasuthu" aria-label="Vasuthu">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalVasuthu"> Vasuthu </label>
-                        </div>
-                    </div>
-
-                    <!-- boreWater and separateEB -->
-                    <div style="width: 50%; float:left;padding:5px">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalboreWater" aria-label="Bore Water">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalboreWater"> Bore Water</label>
-                        </div>
-                    </div>
-
-                    <div style="width: 50%; float:right;padding:5px;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalseparateEB" aria-label="Separate EB">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalseparateEB"> Separate EB </label>
-                        </div>
-                    </div>
-
-                    <!-- twoWheelerParking and fourWheelerParking -->
-                    <div style="width: 50%; float:left;padding:5px">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentaltwoWheelerParking" aria-label="Two Wheeler Parking">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentaltwoWheelerParking"> Two Wheeler Parking</label>
-                        </div>
-                    </div>
-
-                    <div style="width: 50%; float:right;padding:5px;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalfourWheelerParking" aria-label="Four Wheeler Parking">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalfourWheelerParking"> Four Wheeler Parking </label>
-                        </div>
-                    </div>
-
-                    <!-- Apartment and ApartmentFloor-->
-                    <div style="width: 50%; float:left;padding:5px">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalApartment" aria-label="Apartment">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalApartment"> Apartment</label>
-                        </div>
-                    </div>
-
-                    <div style="width: 50%; float:right;padding:5px;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="rentalApartmentFloor">Apartment Floor</span>
-                            </div>
-                            <input type="text" placeholder="Apartment Floor" size="50" class="form-control" id="txtrentalApartmentFloor" aria-describedby="Apartment Floor">
-                        </div>
-                    </div>
-
-
-
-                    <!-- rentalOccupied and petsAllowed -->
-                    <div style="width: 50%; float:left;padding:5px">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkrentalOccupied" aria-label="Rental Occupied">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkrentalOccupied"> Rental Occupied</label>
-                        </div>
-                    </div>
-
-                    <div style="width: 50%; float:right;padding:5px;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <input type="checkbox" id="chkRentalpetsAllowed" aria-label="Pets Allowed">
-                                </div>
-                            </div>
-                            <label class="form-check-label" style="padding-left: 10px;" for="chkRentalpetsAllowed"> Pets Allowed </label>
-                        </div>
-                    </div>
-
-                    <!-- Rental Amount From  and Rental Amount To -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="rentalAmountFrom">Rental Amount From</span>
-                        </div>
-                        <input type="text" placeholder="Rental Amount From" size="50" class="form-control" id="txtRentalRentalAmountFrom" aria-describedby="Rental Amount From">
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="rentalAmountTo">Rental Amount To</span>
-                        </div>
-                        <input type="text" placeholder="Rental Amount To" size="50" class="form-control" id="txtRentalRentalAmountTo" aria-describedby="Rental Amount To">
-                    </div>
-
-
-                    <!-- separateHouse and houseOwnerResidingInSameBuilding -->
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox" id="chkRentalhouseOwnerResidingInSameBuilding" aria-label="House Owner Residing In Same Building">
-                            </div>
-                        </div>
-                        <label class="form-check-label" style="padding-left: 10px;" for="chkRentalhouseOwnerResidingInSameBuilding"> House Owner Residing In Same Building </label>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <input type="checkbox" id="chkRentalseparateHouse" aria-label="Separate House">
-                            </div>
-                        </div>
-                        <label class="form-check-label" style="padding-left: 10px;" for="chkRentalseparateHouse"> Separate House</label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" onclick="modalClose()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" onclick="saveRentalHouseDetails()" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -528,6 +539,14 @@
             console.log('Tabs activve');
             e.preventDefault();
             $(this).tab('show')
+        });
+        $(".nav li").on("click", function () {
+            alert('nav li');
+            $(".nav li").removeClass("active");
+            //$(".nav li").removeClass("show");
+            alert(this);
+            $(this).addClass("active");
+            //$(this).addClass("show");
         });
     </script>
     }

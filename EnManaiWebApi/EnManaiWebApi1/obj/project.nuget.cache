@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PdRuQSRO5wIVVLdthUUNo+hrguwttpNaLXls9mm8W6rNd0DxRGYk/6R2/q82iTkICBFT0/F5XNv8TT2ZVkVzgQ==",
+  "dgSpecHash": "j82qom8QQ5P8jeILLhtqY2sLRAm573fa9fPSvavEVmjmc0wHbua9HOXS4glESirJl5HLui+is0u6zYfSUX2l8Q==",
   "success": true,
   "projectFilePath": "E:\\github\\Properties\\EnManaiWebApi\\EnManaiWebApi1\\EnManaiWebApi.csproj",
   "expectedPackageFiles": [
@@ -89,6 +89,7 @@
     "C:\\Users\\Amuthan\\.nuget\\packages\\nuget.projectmodel\\5.11.0\\nuget.projectmodel.5.11.0.nupkg.sha512",
     "C:\\Users\\Amuthan\\.nuget\\packages\\nuget.protocol\\5.11.0\\nuget.protocol.5.11.0.nupkg.sha512",
     "C:\\Users\\Amuthan\\.nuget\\packages\\nuget.versioning\\6.2.1\\nuget.versioning.6.2.1.nupkg.sha512",
+    "C:\\Users\\Amuthan\\.nuget\\packages\\restsharp\\108.0.3\\restsharp.108.0.3.nupkg.sha512",
     "C:\\Users\\Amuthan\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Amuthan\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\Amuthan\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

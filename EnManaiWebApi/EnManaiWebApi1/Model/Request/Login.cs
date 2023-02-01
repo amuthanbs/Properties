@@ -19,6 +19,7 @@
         public DateTime CreatedDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         public DateTime ModifiedDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         public string CreatedBy { get; set; }
+        public string Status { get; set; }
         public string ModifiedBy { get; set; }
     }
 }

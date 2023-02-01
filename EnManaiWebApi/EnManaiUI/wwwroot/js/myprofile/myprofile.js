@@ -26,6 +26,92 @@ function GetRentalDetails() {
         }
     });
 }
+function modalOpen(e) {
+    $(e.dataset.target).modal('show');
+}
+function modalClose(e) {
+    $('' + e.dataset.target + '').modal('hide');
+}
+function VerifySMS(e) {
+    alert('Sending Verification Code');
+}
+
+var smsGetVerifify = {
+    "username": "string",
+    "loginId": "string",
+    "phonenumber": "string",
+    "createdOn": "2023-01-15T16:27:00.670Z"
+};
+var smsCodeRequest = {
+    "smsCode": 0,
+    "phonenumber": "string",
+    "message": "string"
+}
+var smsGetVerififyRes = {
+    "sMSVerification": {
+        "username": "amuthan",
+        "loginId": "1",
+        "phonenumber": "9952401981",
+        "createdOn": "2023-01-15T00:00:00"
+    },
+    "verificationOn": false,
+    "status": "DataError",
+    "errorMessage": "Verification Blocked"
+}
+
+function SMSVerification(e) {
+    //$('#sub-modal').modal({
+    //    closeExisting: false
+    //});
+    var d = new Date();
+    smsGetVerifify.username = login.userName;
+    smsGetVerifify.loginId = login.id + "";
+    smsGetVerifify.phonenumber = login.phoneNumber;
+    smsGetVerifify.createdOn = d;
+    window.location.href = 'https://localhost:7059/Home/SMSVerification';
+    //$.ajax({
+    //    type: "POST",
+    //    url: 'https://localhost:7041/api/Verification/GetSMSVerfification',
+    //    data: JSON.stringify(smsGetVerifify),
+    //    //headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
+    //    dataType: 'json',
+    //    contentType: 'application/json',
+    //    success: function (event, xhr, settings) {
+    //        console.log(event);
+    //        if (event.verificationOn) {
+    //            SendSMS();
+    //        }
+    //        //window.location.href = 'https://localhost:7059/Home/LandingPage';
+    //    },
+    //    error: function (event, xhr, settings) {
+    //        console.log(event);
+    //        //window.location.href = 'https://localhost:7059/Home/LandingPage';
+    //    }
+    //});
+}
+function SendSMS(e) {
+    smsCodeRequest.phonenumber = smsGetVerifify.phonenumber;
+    $.ajax({
+        type: "POST",
+        url: 'https://localhost:7041/api/Verification/SendSMS',
+        data: JSON.stringify(smsCodeRequest),
+        //headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (event, xhr, settings) {
+            console.log(event);
+            //if (event.verificationOn) {
+            //    SendSMS();
+            //}
+            window.location.href = 'https://localhost:7059/Home/SMSVerification';
+        },
+        error: function (event, xhr, settings) {
+            console.log(event);
+            //window.location.href = 'https://localhost:7059/Home/LandingPage';
+        }
+    });
+    $('#exampleModal').modal('show');
+}
 function GetProfileDetail() {
 
     var loginRequest = {
@@ -52,22 +138,24 @@ function GetProfileDetail() {
             }
         });
     } else {
+        if ((login === null) && (usr !== null)) {
+            login = usr.logins[0];
+        }
         SetUpProfilePage();
     }
 }
 function SetUpProfilePage() {
     console.log(login);
-    $('#txtUserName').val(login[0].userName);
-    $('#txtPhoneNumber').val(login[0].phoneNumber);
-    $('#txtEmailId').val(login[0].eMailId);
-    $('#chkPhoneNumberVerified').prop('checked', login[0].phoneNumberVerified);
-    $('#chkEmailVerified').prop('checked', login[0].emailVerified);
-    $('#txtReverification').val(login[0].reverificationTime);
-    $('#txtPhoneNumberVerifiedDate').val(login[0].phoneNumberVerifiedDate);
-    $('#txtEmailVerifiedDate').val(login[0].emailIdVerifiedDate);
-    $('#chkMandatoryVerification').prop('checked', login[0].mandatoryVerification);
-    $('#chkReVerification').prop('checked', login[0].reVerification);
-
+    $('#txtUserName').val(login.userName);
+    $('#txtPhoneNumber').val(login.phoneNumber);
+    $('#txtEmailId').val(login.eMailId);
+    $('#chkPhoneNumberVerified').prop('checked', login.phoneNumberVerified);
+    $('#chkEmailVerified').prop('checked', login.emailVerified);
+    $('#txtReverification').val(login.reverificationTime);
+    $('#txtPhoneNumberVerifiedDate').val(login.phoneNumberVerifiedDate);
+    $('#txtEmailVerifiedDate').val(login.emailIdVerifiedDate);
+    $('#chkMandatoryVerification').prop('checked', login.mandatoryVerification);
+    $('#chkReVerification').prop('checked', login.reVerification);
 }
 function SetUpHouseDetail() {
     $('#txtRecordId').val(rentalDetails.houseOwner.id);

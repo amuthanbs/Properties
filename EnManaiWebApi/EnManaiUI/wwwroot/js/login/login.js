@@ -9,8 +9,20 @@ $(document).ready(function () {
 
     //export { logins };
     var login = null;
+    usr = GetLocalData("user");
+    if (!isNull(usr)) {
+        usr = JSON.parse(usr);
+        userType = 'Logged';
+        login = usr.logins[0];
+        //if (login.status === 'Active') {
+        //    redirect(reHost() + '/Home/LoggedSearch');
+        //}
+    }
     setLocalRentalData('rentaldetails', null);
-})
+});
+
+
+
 
 function Submit() {
     debugger;
@@ -26,32 +38,44 @@ function Submit() {
         //headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
         data: JSON.stringify(loginrequest),
         dataType: 'json',
+        async:false,
         contentType: 'application/json',
         success: function (result, xhr, settings) {
             login = result.logins[0];
             console.log(result);
-            SetLocalData("user",result);
-            if (result.status === 'Success') {
-                if (login.mandatoryVerification) {
-                    if (!login.reVerification) {
+            SetLocalData("user", result);
+            if (login !== undefined) {
+                if (result.status === 'Success') {
+                    //if (login.mandatoryVerification) {
+                    //if (login.reVerification) {
+                    //if (login.status === "Active") {
                         if (login.phoneNumberVerified) {
                             //window.location.href = 'https://localhost:7059/Home/Search';
                             window.location.href = 'https://localhost:7059/Home/LoggedSearch';
                         } else {
                             alert('Complete your phone verification');
-                            window.location.href = 'https://localhost:7059/';
-                            return;
+                            window.location.href = 'https://localhost:7059/Home/SMSVerification';
                         }
-                    } else {
-                        alert('do your phone verification');
-                        window.location.href = 'https://localhost:7059';
-                        return;
-                    }
+                    //} else {
+                    //    window.location.href = 'https://localhost:7059/Home/Index';
+                    //}
+
+                    //} else {
+                    //    alert('do your phone verification');
+                    //    window.location.href = 'https://localhost:7059';
+                    //    return;
+                    //}
                 }
             } else {
-                alert('Login Failed', result.errorMessage);
-                window.location.href = 'https://localhost:7059/';
+                /// User Does not exists;
+                alert(result.errorMessage);
+                window.location.href = 'https://localhost:7059/Home/Search';
             }
+            //}
+            //else {
+            //    alert('Login Failed', result.errorMessage);
+            //    window.location.href = 'https://localhost:7059/';
+            //}
         },
         error: function (result  , xhr, settings) {
             alert('500 internal server error' );

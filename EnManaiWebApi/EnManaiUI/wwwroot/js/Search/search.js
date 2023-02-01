@@ -8,6 +8,10 @@ $(document).ready(function () {
     if (!isNull(usr)) {
         usr = JSON.parse(usr);
         userType = 'Logged';
+        login = usr.logins[0];
+        //if (login.status === 'Active') {
+        //    redirect(reHost() + '/Home/LoggedSearch');
+        //}
     } else {
         userType = 'UnRegistered';
     }

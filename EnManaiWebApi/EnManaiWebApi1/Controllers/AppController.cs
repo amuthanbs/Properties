@@ -22,12 +22,15 @@ namespace EnManaiWebApi.Controllers
         private readonly IHouseOwnerDAO _houseOwnerDAO;
         private readonly IRentalDetailsDAO _rentalDetailsDAO;
         private readonly ISearchDAO _searchDAO;
+        private readonly ISMSVerificationDAO _iSMSVerificationDAO;
         private readonly string connStr;
         private readonly JwtSettings jwtSettings;
+        int SMSReverificationPeriodInDays = 0;
         public AppController(ILogger<AppController> logger, ILoginDAO loginDAO, IConfiguration config,
             IHouseOwnerDAO houseOwnerDAO,
             IRentalDetailsDAO rentalDetailsDAO,
-            ISearchDAO searchDAO, JwtSettings jwtSettings)
+            ISearchDAO searchDAO, JwtSettings jwtSettings,
+            ISMSVerificationDAO iSMSVerificationDAO)
         {
             _logger = logger;
             _loginDAO = loginDAO;
@@ -35,7 +38,9 @@ namespace EnManaiWebApi.Controllers
             _houseOwnerDAO = houseOwnerDAO;
             _rentalDetailsDAO = rentalDetailsDAO;
             _searchDAO = searchDAO;
+            _iSMSVerificationDAO = iSMSVerificationDAO;
             connStr = _config.GetSection("ConnectionStrings:sql").Value;
+            SMSReverificationPeriodInDays = Int32.Parse( _config.GetValue<string>("SMSReverificationPeriodInDays"));
             this.jwtSettings = jwtSettings;
         }
         #region Rental Detail
@@ -142,7 +147,6 @@ namespace EnManaiWebApi.Controllers
             RentalDetailsResponse res = new RentalDetailsResponse();
             try
             {
-
                 res.rentalDetails = new RentalDetails();
                 RentalDetails rental = new RentalDetails();
                 rental.houseOwner = _houseOwnerDAO.GetById(1, connStr);
@@ -234,7 +238,7 @@ namespace EnManaiWebApi.Controllers
             res.logins = new List<Login>();
             
             Login l = _loginDAO.GetLogin(0, loginRequest.UserName,loginRequest.Password, connStr);
-            res.paymentForTenant = _loginDAO.GetPayment(l.ID, l.UserName, connStr);
+            
             if (l == null)
             {
                 res.status = Status.DataError;
@@ -244,7 +248,22 @@ namespace EnManaiWebApi.Controllers
             else
             {
                 Valid = true;
+                //DateTime dt = ((DateTime) l.PhoneNumberVerifiedDate).AddDays(SMSReverificationPeriodInDays);
+                //double days = ( DateTime.Now - (DateTime)l.PhoneNumberVerifiedDate).TotalDays;
+                //if( days >= SMSReverificationPeriodInDays)
+                //{
+                //    l.PhoneNumberVerified = false;
+                //    l.ReVerification = true;
+                //    try
+                //    {
+                //        _loginDAO.updatePhoneVerificationStatus(l, connStr);
+                //    } catch (Exception ex)
+                //    {
+                //        throw Exception("SMS Verification date")
+                //    }
+                //}
             }
+            res.paymentForTenant = _loginDAO.GetPayment(l.ID, l.UserName, connStr);
             res.logins.Add(l);
             
             res.status = Status.Success;

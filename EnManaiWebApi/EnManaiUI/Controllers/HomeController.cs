@@ -51,6 +51,16 @@ namespace EnManaiUI.Controllers
         {
             return View();
         }
+
+        public IActionResult SMSVerification()
+        {
+            return View();
+        }
+
+        public IActionResult SMSVerificat()
+        {
+            return View();
+        }
         //public IActionResult SearchResult(string city)
         //{
         //    return View();

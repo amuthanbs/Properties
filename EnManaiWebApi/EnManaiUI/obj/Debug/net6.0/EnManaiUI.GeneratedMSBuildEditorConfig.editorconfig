@@ -47,8 +47,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2hSZXN1bHQxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/SMSVerification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTTVNWZXJpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/View.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Home/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/github/Properties/EnManaiWebApi/EnManaiUI/Views/Shared/Error.cshtml]

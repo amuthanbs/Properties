@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+*@
+@{
+    ViewData["Title"] = "SMS Verification";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+@{
+    <form>
+        <div>
+            <input type="hidden" id="txtRecordId">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="Phonenumber">Code to </span>
+            </div>
+            <input type="text" placeholder="Phone number" size="50" class="form-control" id="txtPhonenumber" aria-describedby="Phone Number">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="VerificationCode">Enter Verification Code</span>
+            </div>
+            <input type="text" placeholder="SMS Code" size="50" class="form-control" id="txtVerificationCode" aria-describedby="Verification Code">
+        </div>
+        <div class="input-group mb-3">
+            <button type="button" class="btn btn-primary" onclick="VerifiyBySMSCode(this)">Verify</button>
+        </div>
+        <div class="input-group mb-3">
+            <button type="button" class="btn btn-primary" onclick="ReSendSMSCode(this)">Re-Send Code</button>
+        </div>
+
+        
+
+        <!--<div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="PhoneNumber">Enter Verification Code</span>
+            </div>
+            <input type="text" placeholder="SMS Code" size="50" class="form-control" id="txtVerificationCode" aria-describedby="Verification Code">
+        </div>-->
+    </form>
+}
+@section scripts{
+    @*<script type="text/javascript" src="~/js/common.js"></script>
+    @*<script type="text/javascript" src="~/js/login/login.js"></script>
+    //<script type="text/javascript" src="~/js/myprofile/myprofile.js"></script>*@
+    <script type="text/javascript" src="~/js/myprofile/SMSVerification.js"></script>
+    <script>
+        $('#ex1 a').on('click', function (e) {
+            console.log('Tabs active');
+            e.preventDefault();
+            $(this).tab('show')
+        });
+    </script>
+    }

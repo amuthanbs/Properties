@@ -17,6 +17,7 @@ namespace EnManaiWebApi.DAO
         int updateLogin(Login login, string connStr);
         public Login getUserDetails(int userID, string connStr);
         public PaymentForTenant GetPayment(int id, string username, string connStr);
+        public int updatePhoneVerificationStatus(Login login, string connStr);
     }
     public class LoginDAO : ILoginDAO
     {
@@ -259,9 +260,9 @@ namespace EnManaiWebApi.DAO
             IDbConnection db = null;
             try
             {
-                string @sql = @"Update LOGIN SET username = @username,
+                string @sql = @"Update LOGIN SET 
                 password = @password,
-                phonenumber = @phonenumber,
+                
                 emailid = @emailid,
                 houseownerid = @houseownerid,
                 tenantid = @tenantid,
@@ -275,9 +276,7 @@ namespace EnManaiWebApi.DAO
                 createddate = @createddate,
                 modifieddate = @modifieddate,
                 createdby = @createdby,
-                modifiedby) values(@username,
-                @password,
-                @phonenumber,
+                modifiedby) values(@password,
                 @emailid,
                 @houseownerid,
                 @tenantid,
@@ -291,7 +290,7 @@ namespace EnManaiWebApi.DAO
                 @createddate,
                 @modifieddate,
                 @createdby,
-                @modifiedby)";
+                @modifiedby) WHERE username = @username AND  phonenumber = @phonenumber";
 
                 var dic = new Dictionary<string, object>();
 
@@ -332,5 +331,60 @@ namespace EnManaiWebApi.DAO
                 }
             }
         }
-    }
+
+        public int updatePhoneVerificationStatus(Login login, string connStr)
+        {
+            int count = 0;
+            IDbConnection db = null;
+            try
+            {
+                string @sql = @"Update LOGIN SET 
+                phonenumberverified = @phonenumberverified,
+                phonenumberverifieddate = @phonenumberverifieddate,
+                ReVerification = @ReVerification,
+                createddate = @createddate,
+                modifieddate = @modifieddate,
+                createdby = @createdby,
+                modifiedby = @modifiedby WHERE username = @username AND  phonenumber = @phonenumber";
+
+                var dic = new Dictionary<string, object>();
+
+                dic.Add("UserName", login.UserName);
+                dic.Add("Password", login.Password);
+                dic.Add("CreatedDate", login.CreatedDate);
+                dic.Add("ModifiedDate", login.ModifiedDate);
+                dic.Add("CreatedBy", login.CreatedBy);
+                dic.Add("ModifiedBy", login.ModifiedBy);
+                dic.Add("PhoneNumber", login.PhoneNumber);
+                dic.Add("Emailid", login.EMailId);
+                dic.Add("houseownerid", login.HouseOwnerId);
+                dic.Add("tenantid", login.TenantId);
+                dic.Add("phonenumberverified", login.PhoneNumberVerified);
+                dic.Add("emailverified", login.EmailVerified);
+                dic.Add("reverificationtime", login.ReverficationTime);
+                dic.Add("phonenumberverifieddate", login.PhoneNumberVerifiedDate);
+                dic.Add("emailverifieddate", login.EmailIdVerifiedDate);
+                dic.Add("MandatoryVerification", login.MandatoryVerification);
+                dic.Add("ReVerification", login.ReVerification);
+                using (db = new SqlConnection(connStr))
+                {
+                    db.Open();
+                    count = db.Execute(sql, dic);
+
+                }
+                return count;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (db != null)
+                {
+                    db.Close();
+                }
+            }
+        }
+    }   
 }
