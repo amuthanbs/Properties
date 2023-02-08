@@ -9,6 +9,7 @@ using TokenBased.JwtHHelpers;
 using TokenBased.Model;
 using TokenBased.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using MessagePack;
 
 namespace EnManaiWebApi.Controllers
 {
@@ -26,6 +27,8 @@ namespace EnManaiWebApi.Controllers
         private readonly string connStr;
         private readonly JwtSettings jwtSettings;
         int SMSReverificationPeriodInDays = 0;
+        int RecordsPerDay = 0;
+        int Start = 0;
         public AppController(ILogger<AppController> logger, ILoginDAO loginDAO, IConfiguration config,
             IHouseOwnerDAO houseOwnerDAO,
             IRentalDetailsDAO rentalDetailsDAO,
@@ -41,6 +44,7 @@ namespace EnManaiWebApi.Controllers
             _iSMSVerificationDAO = iSMSVerificationDAO;
             connStr = _config.GetSection("ConnectionStrings:sql").Value;
             SMSReverificationPeriodInDays = Int32.Parse( _config.GetValue<string>("SMSReverificationPeriodInDays"));
+            RecordsPerDay = Int32.Parse(_config.GetValue<string>("RecordsPerPage"));
             this.jwtSettings = jwtSettings;
         }
         #region Rental Detail
@@ -59,14 +63,14 @@ namespace EnManaiWebApi.Controllers
         [HttpPost]
         [Route("SearchResult")]
         [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
-        public IActionResult Search(string city, string? encryptedUserCode, int id)
+        public IActionResult Search(string city, string? encryptedUserCode, int id,int start = 0, int end=5)
         {
             var headers = HttpContext.Request.Headers.Authorization;
             SearchResponse res = new SearchResponse();
             //headers.FirstOrDefault().Split(' ')[1]
             //Login l = this._loginDAO.getUserDetails(id, connStr);
             LoggedSearchResponse logRes = new LoggedSearchResponse();
-            List<RentalHouseDetail> resp = _searchDAO.BasicSearch(id,city, connStr);
+            List<RentalHouseDetail> resp = _searchDAO.BasicSearch(id,city, connStr, start, end);
             Login l = _loginDAO.getUserDetails(id, connStr);
             PaymentForTenant pft =  _loginDAO.GetPayment(id, l.UserName, connStr);
             if ((pft == null ) || (pft.PaymentExpired == true))
@@ -84,7 +88,7 @@ namespace EnManaiWebApi.Controllers
         {
             var headers = HttpContext.Request.Headers;
             unregisteredSearchResponse res = new unregisteredSearchResponse();
-            var resp = _searchDAO.BasicSearch(0,city, connStr);
+            var resp = _searchDAO.BasicSearch(0,city, connStr,Start,RecordsPerDay);
 
             res.rentalDetails = ConvertTounregisteredRentalHouseDetail(resp);
             res.status = Status.Success;

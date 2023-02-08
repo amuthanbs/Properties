@@ -8,7 +8,7 @@ namespace EnManaiWebApi.DAO
 {
     public interface ISearchDAO
     {
-        public List<RentalHouseDetail> BasicSearch(int id,string city, string connStr);
+        public List<RentalHouseDetail> BasicSearch(int id,string city, string connStr, int start, int end);
         //public HouseOwner GetById(int id, string connStr);
         //public HouseOwner Save(HouseOwner houseOwner, string connStr);
         //public HouseOwner Create(HouseOwner houseOwner, string connStr);
@@ -16,11 +16,11 @@ namespace EnManaiWebApi.DAO
     }
     public class SearchDAO : ISearchDAO
     {
-        public List<RentalHouseDetail> BasicSearch(int id=0,string city="", string connStr="")
+        public List<RentalHouseDetail> BasicSearch(int id=0,string city="", string connStr="", int start=0, int end=5)
         {
             //string[] splt = city.Split(',');
             //if (splt.Length == 1)
-            {
+            //{
                 IDbConnection db = null;
                 List<RentalHouseDetail> rentalHouselist = new List<RentalHouseDetail>();
                 try
@@ -30,7 +30,8 @@ namespace EnManaiWebApi.DAO
                             { "id",null},
                             { "HouseOwnerId" , null },
                             {"AreaOrNagar",null},
-                            { "City", "Coimbatore"},
+                            //{ "City", "Coimbatore"},
+                            { "City", city},
                             { "District", null},
                             {"State", null },
                             {"Pincode" , null },
@@ -49,7 +50,9 @@ namespace EnManaiWebApi.DAO
                             {"RentFrom" ,null },
                             {"RentTo",null },
                             {"PetsAllowed" ,0 },
-                        {"PaymentActive",true }
+                        {"PaymentActive",true },
+                        {"Start",start },
+                        {"End",end }
                         };
                     using (db = new SqlConnection(connStr))
                     {
@@ -75,7 +78,7 @@ namespace EnManaiWebApi.DAO
                 {
                     if (db != null) { db.Close(); }
                 }
-            }
+            //}
         }
 
         private bool GetPaymentStatus(int id, int houseOwnerId, string connStr)

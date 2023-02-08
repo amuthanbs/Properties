@@ -2,7 +2,6 @@
     ViewData["Title"] = "Logged Search";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-@*searchPageBorderPadding*@
 <div id="main" class="container searchPageBorderPadding">
     <div class="input-group">
         <input list="datalistOptions" class="form-control border-end-0 border rounded-pill" type="search" id="search-input">
@@ -13,7 +12,6 @@
             <option value="Theni" />
         </datalist>
         <span class="input-group-append">
-            @*onclick="SearchByCity()*@
             <button id="btnSearch" onclick="SearchByCity()" class="btn btn-primary bg-blue border-bottom-0 border rounded-pill ms-n5" type="button">
                 <i class="fa fa-search"></i>
             </button>
@@ -21,6 +19,14 @@
     </div>
     <div class="rentals pa-20">
     </div>
+    <div id="loadMore" class="input-group">
+        <button id="btnLoadMore" onclick="loadMore()" class="btn btn-primary bg-blue border-bottom-0 border rounded-pill ms-n5" type="button">Load More ...
+        </button>
+    </div>
+    <ul class="pager">
+        <li class="previous"><a href="#">Previous</a></li>
+        <li class="next"><a href="#">Next</a></li>
+    </ul>
 </div>
 
 @section scripts{

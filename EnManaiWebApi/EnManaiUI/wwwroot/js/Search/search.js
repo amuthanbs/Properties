@@ -1,6 +1,7 @@
 ﻿
 var usr;
 var userType = 'UnRegistered';
+
 $(document).ready(function () {
     console.log('Seach JS');
     console.log('rentalDetails');
@@ -21,7 +22,7 @@ $(document).ready(function () {
 //    $.ajax({
 //        type: "POST",
 //        url: 'https://localhost:7041/api/Home/LandingPage?id=' + usr.logins[0].id,
-//        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,  
+//        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,
 //        contentType: 'application/json; charset=utf-8',
 //        headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
 //        success: function (result, xhr, settings) {
@@ -38,6 +39,10 @@ $(document).ready(function () {
 //        }
 //    });
 //}
+
+function loadMore() {
+    alert(currentNoRecords);
+}
 function SearchByCity() {
     console.log('Search Text:');
     var search = $('#search-input').val();
@@ -51,6 +56,8 @@ function SearchByCity() {
             success: function (result, xhr, settings) {
                 console.log('Result:', result);
                 rentalDetails = result.rentalDetails;
+                currentNoRecords = result.rentalDetails.length;
+                alert(currentNoRecords);
                 setLocalRentalData("rentaldetails", rentalDetails);
                 window.location.href = 'https://localhost:7059/Home/SearchResult?city=' + search;
             },
@@ -69,6 +76,7 @@ function SearchByCity() {
                 console.log('Result:', result);
                 // alert('Search Result Success')
                 rentalDetails = result.rentalDetails;
+                currentNoRecords = result.rentalDetails.length;
                 setLocalRentalData("rentaldetails", rentalDetails);
                 //console.log(rentalDetails);
                 //SetUpHouseDetail();

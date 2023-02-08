@@ -9,15 +9,20 @@ namespace EnManaiUI.Controllers
     {
         private readonly JwtSettings jwtSettings;
         private readonly ILogger<HomeController> _logger;
+        private readonly IConfiguration _config;
+        string APIUrl = null;
 
-        public HomeController(ILogger<HomeController> logger, JwtSettings jwtSettings)
+        public HomeController(ILogger<HomeController> logger, JwtSettings jwtSettings, IConfiguration config)
         {
             _logger = logger;
             this.jwtSettings = jwtSettings;
+            _config = config;
+            APIUrl = _config.GetValue<string>("API");
         }
 
         public IActionResult Index()
         {
+            ViewBag.apiurl = APIUrl;
             return View();
         }
 

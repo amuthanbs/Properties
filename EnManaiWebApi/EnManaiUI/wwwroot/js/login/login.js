@@ -5,6 +5,7 @@
 }
 
 $(document).ready(function () {
+    //console.log('API Url:', APIUrl);
     console.log('hello. Welcome by Amuthan');
 
     //export { logins };

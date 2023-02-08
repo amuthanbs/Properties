@@ -1,6 +1,7 @@
 ﻿var user = null;
 var logins = null;
 var rentalDetails = [];
+var currentNoRecords = 0;
 //$(window).unload(function () {
 //    alert('Clearing local cache');
 //    localStorage.clear();

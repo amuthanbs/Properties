@@ -3,11 +3,10 @@ var rentalData = null;
 var user = null;
 var userType = 'UnRegistered';
 $(document).ready(function () {
-    debugger;
+    //debugger;
     //console.log('Seach JS');
     //console.log('rentalDetails');
     var s = window.location.href;
-
 
     var rentalDataTemp = getLocalRentalData("rentaldetails");
     var userTemp = GetLocalData("user");
@@ -19,9 +18,11 @@ $(document).ready(function () {
         rentalData = JSON.parse(rentalDataTemp);
         $('#main').removeClass('searchPageBorderPadding');
         loadRentalData();
+        $('#btnLoadMore').removeClass('hidden');
     } else {
         $('.rentals').empty();
         $('#main').addClass('searchPageBorderPadding');
+        $('#btnLoadMore').addClass('hidden');
     }
 });
 //function MyProfile() {
@@ -29,7 +30,7 @@ $(document).ready(function () {
 //    $.ajax({
 //        type: "POST",
 //        url: 'https://localhost:7041/api/Home/LandingPage?id=' + usr.logins[0].id,
-//        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,  
+//        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,
 //        contentType: 'application/json; charset=utf-8',
 //        headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
 //        success: function (result, xhr, settings) {
@@ -54,7 +55,7 @@ $(document).ready(function () {
 //    $.ajax({
 //        type: "POST",
 //        url: 'https://localhost:7041/api/Home/SearchResult?city=' + search + '&encryptedUserCode=' + encodeURIComponent(''),
-//        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,  
+//        //data: "city=" + search + "&encryptedUserCode=uiuoi" ,
 //        contentType: 'application/json; charset=utf-8',
 //        headers: { "Authorization": 'Bearer ' + usr.accessToken.token },
 //        success: function (result, xhr, settings) {
@@ -71,6 +72,7 @@ $(document).ready(function () {
 //        }
 //    });
 //}
+
 function loadRentalData() {
     console.log(test);
     //$('.rentals').append(rentalDetails);
