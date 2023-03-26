@@ -82,3 +82,8 @@ E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\refint\TokenBased
 E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\TokenBased.pdb
 E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\TokenBased.genruntimeconfig.cache
 E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\ref\TokenBased.dll
+E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\staticwebassets\msbuild.TokenBased.Microsoft.AspNetCore.StaticWebAssets.props
+E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\staticwebassets\msbuild.build.TokenBased.props
+E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.TokenBased.props
+E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.TokenBased.props
+E:\github\Properties\EnManaiWebApi\TokenBased\obj\Debug\net6.0\staticwebassets.pack.json

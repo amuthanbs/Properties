@@ -21,6 +21,17 @@ function setLocalRentalData(name, value) {
     console.log(localStorage.getItem(name));
 }
 
+function setLocalPageNumber(name, value) {
+    localStorage.setItem(name, JSON.stringify(value));
+    console.log(localStorage.getItem(name));
+}
+
+function getLocalPageNumber(name) {
+    if (!isNull(name))
+        return localStorage.getItem(name);
+    return null;
+}
+
 function getLocalRentalData(name) {
     if (!isNull(name))
         return localStorage.getItem(name);

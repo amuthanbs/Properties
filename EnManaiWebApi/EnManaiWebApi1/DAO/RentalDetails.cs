@@ -33,7 +33,30 @@ namespace EnManaiWebApi.DAO
 
         public RentalHouseDetail GetById(int id, string connStr)
         {
-            throw new NotImplementedException();
+            IDbConnection db = null;
+            RentalHouseDetail rental=null;
+            try
+            {
+                var dic = new Dictionary<string, object>
+                        {
+                            { "id",id}
+                        };
+                using (db = new SqlConnection(connStr))
+                {
+                    db.Open();
+                    rental = db.Query<RentalHouseDetail>(@"SELECT * FROM RentalHouseDetails where id = @id", dic).FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.Close(); }
+            }
+
+            return rental;
         }
 
         public List<RentalHouseDetail> GetOwnerRentalHouse(int houseOwnerID, string connStr)

@@ -23,6 +23,17 @@
 </div>
 
 @section scripts{
-    <script type="text/javascript" src="~/js/search/search.js"></script>
+    <script type="text/javascript" src="~/js/search/c.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            usr = GetLocalData("user");
+            if (!isNull(usr)) {
+                usr = JSON.parse(usr);
+                userType = 'Logged';
+                login = usr.logins[0];
+                window.location.href = 'https://localhost:7059/Home/LoggedSearch';
+            }
+        });
+    </script>
 }
 

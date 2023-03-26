@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IcEmSlr2zkZ+eBnACJCoyAekfx9BOfcFSNhPm/rhma8=",
+  "Hash": "pw5DGhqgxayt0J9LOfYXbicHEdZFQxkkrOJzNgGT54Q=",
   "Source": "EnManaiUI",
   "BasePath": "_content/EnManaiUI",
   "Mode": "Default",
@@ -12,10 +12,10 @@
       "Source": "TokenBased",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
       "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
       "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier"
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
     }
   ],
   "DiscoveryPatterns": [

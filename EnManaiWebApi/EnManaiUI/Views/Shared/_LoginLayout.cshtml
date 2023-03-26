@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Home Page";
     var api = config.GetValue<string>("API");
+    var NoOfRecordsPerPage = config.GetValue<string>("NoOfRecordsPerPage");
 }
 <html lang="en">
 <head>
@@ -59,8 +60,10 @@
     <script type="text/javascript" src="~/js/common.js"></script>
     <script type="text/javascript">
         var APIUrl = '@api';
+        var NoOfRecordsPerPage = '@NoOfRecordsPerPage';
         console.log('API Url:', APIUrl);
-        alert('APIUrl:', APIUrl);
+        console.log('No Of Records Per Page:', NoOfRecordsPerPage);
+        //alert('APIUrl:', APIUrl);
     </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

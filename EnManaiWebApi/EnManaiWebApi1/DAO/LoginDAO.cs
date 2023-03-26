@@ -6,6 +6,7 @@ using EnManaiWebApi.Model;
 using System.Collections.Generic;
 using System.Collections;
 using Dapper;
+using TokenBased.Model;
 
 namespace EnManaiWebApi.DAO
 {
@@ -18,6 +19,7 @@ namespace EnManaiWebApi.DAO
         public Login getUserDetails(int userID, string connStr);
         public PaymentForTenant GetPayment(int id, string username, string connStr);
         public int updatePhoneVerificationStatus(Login login, string connStr);
+        public Login UpdateNonPaidContactList(int id, string cntList, string connStr);
     }
     public class LoginDAO : ILoginDAO
     {
@@ -219,6 +221,41 @@ namespace EnManaiWebApi.DAO
                     db.Close();
                 }
             }
+        }
+
+        public Login UpdateNonPaidContactList(int id, string cntList,string connStr)
+        {
+            Login login = new Login();
+
+            IDbConnection db = null;
+            try
+            {
+                string @sql = @"SELECT * FROM LOGIN WHERE ID=@Id";
+                var dic = new Dictionary<string, object>()
+                {
+                    {"id",@id }
+                };
+                
+
+                using (db = new SqlConnection(connStr))
+                {
+                    db.Open();
+                    login = db.Query<Login>(sql, dic).FirstOrDefault();
+                    int v = login.NonPaidedContactViewed != 0 ? login.NonPaidedContactViewed - 1 : 0;
+                    var updateDic = new Dictionary<string, object>() {
+                    {"id",@id },
+                    {"lst",@cntList },
+                    { "view",@v}
+                    };
+                    if (login != null) {
+                        string @updateSql = @"UPDATE login SET [NonPaidContactList] = @lst, [NonPaidedContactViewed] = @view WHERE id = @id";
+                        db.Execute(updateSql,updateDic);
+                    }
+                    login = db.Query<Login>(sql, dic).FirstOrDefault();
+                }
+                return login;
+            }
+            catch(Exception ex) { throw; }
         }
 
         public Login getUserDetails(int userID, string connStr)

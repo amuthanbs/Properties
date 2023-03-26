@@ -62,7 +62,7 @@ namespace EnManaiWebApi.DAO
                         {
 
                             RentalHouseDetail rd = ConvertToObject(item);
-                            rd.PaymentActive = GetPaymentStatus(rd.Id, rd.HouseOwnerId, connStr);
+                            //rd.PaymentActive = GetPaymentStatus(rd.Id, rd.HouseOwnerId, connStr);
                             rentalHouselist.Add(rd);
                         }
                         //holist = db.Query<HouseOwner>(@"SELECT * FROM HOUSEOWNER where id = @id", dic).AsList();
@@ -145,6 +145,10 @@ namespace EnManaiWebApi.DAO
             rhd.RentTo = item.RentTo;
             rhd.PetsAllowed = item.PetsAllowed;
             rhd.PaymentActive = item.PaymentActive;
+            rhd.Deposit = item.Deposit;
+            rhd.PhoneNumber = item.PhoneNumber;
+            rhd.PhoneNumberPrimary = item.PhoneNumberPrimary;
+            rhd.LandLineNumber = item.LandLineNumber;
 
             return rhd;
         }

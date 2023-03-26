@@ -5,10 +5,7 @@
 }
 
 $(document).ready(function () {
-    //console.log('API Url:', APIUrl);
     console.log('hello. Welcome by Amuthan');
-
-    //export { logins };
     var login = null;
     usr = GetLocalData("user");
     if (!isNull(usr)) {
@@ -26,7 +23,6 @@ $(document).ready(function () {
 
 
 function Submit() {
-    debugger;
     loginrequest.userName = $('#txtUserName').val();
     loginrequest.password = $('#txtPassword').val();
     loginrequest.forgetpassword = false;
@@ -47,9 +43,6 @@ function Submit() {
             SetLocalData("user", result);
             if (login !== undefined) {
                 if (result.status === 'Success') {
-                    //if (login.mandatoryVerification) {
-                    //if (login.reVerification) {
-                    //if (login.status === "Active") {
                         if (login.phoneNumberVerified) {
                             //window.location.href = 'https://localhost:7059/Home/Search';
                             window.location.href = 'https://localhost:7059/Home/LoggedSearch';
@@ -57,26 +50,11 @@ function Submit() {
                             alert('Complete your phone verification');
                             window.location.href = 'https://localhost:7059/Home/SMSVerification';
                         }
-                    //} else {
-                    //    window.location.href = 'https://localhost:7059/Home/Index';
-                    //}
-
-                    //} else {
-                    //    alert('do your phone verification');
-                    //    window.location.href = 'https://localhost:7059';
-                    //    return;
-                    //}
                 }
             } else {
-                /// User Does not exists;
                 alert(result.errorMessage);
                 window.location.href = 'https://localhost:7059/Home/Search';
             }
-            //}
-            //else {
-            //    alert('Login Failed', result.errorMessage);
-            //    window.location.href = 'https://localhost:7059/';
-            //}
         },
         error: function (result  , xhr, settings) {
             alert('500 internal server error' );

@@ -21,5 +21,10 @@
         public string CreatedBy { get; set; }
         public string Status { get; set; }
         public string ModifiedBy { get; set; }
+        public int NonPaidedContactViewed { get; set; }
+        public int PaidedContactViewed { get; set; }
+        public bool Paided { get; set; }
+        public int NoOfNonPaidedContact { get; set; }
+        public string NonPaidContactList { get; set; }
     }
 }

@@ -21,5 +21,9 @@ namespace EnManaiWebApi.Model.Response
         public List<UnregisteredRentalHouseDetail> rentalDetails { get; set; }
         public List<HouseOwner> houseOwners { get; set; }
     }
-
+    public class PaidedSearchResponse : Response
+    {
+        public List<PaidedRentalHouseDetail> rentalDetails { get; set; }
+        public List<HouseOwner> houseOwners { get; set; }
+    }
 }

@@ -290,3 +290,8 @@ E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\refint\EnManaiUI.d
 E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\EnManaiUI.pdb
 E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\EnManaiUI.genruntimeconfig.cache
 E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\ref\EnManaiUI.dll
+E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\staticwebassets\msbuild.EnManaiUI.Microsoft.AspNetCore.StaticWebAssets.props
+E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\staticwebassets\msbuild.build.EnManaiUI.props
+E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.EnManaiUI.props
+E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.EnManaiUI.props
+E:\github\Properties\EnManaiWebApi\EnManaiUI\obj\Debug\net6.0\staticwebassets.pack.json
