@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "UnRegistered";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="input-group">
+        <input list="datalistOptionsSR" class="form-control border-end-0 border rounded-pill" type="search" id="search-input-Result">
+        <datalist id="datalistOptionsSR">
+            <option value="Coimbatore" />
+            <option value="Palani" />
+            <option value="Udumelpet" />
+            @*<option value="Theni" />*@
+        </datalist>
+        <span class="input-group-append">
+            <button id="btnSearchResult" onclick="SearchByCity()" class="btn btn-primary bg-blue border-bottom-0 border rounded-pill ms-n5" type="button">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+    <div class="rentals input-group">
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="~/js/search/searchresult.js"></script>
+}
+

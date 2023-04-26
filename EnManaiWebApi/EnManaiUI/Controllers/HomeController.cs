@@ -44,16 +44,23 @@ namespace EnManaiUI.Controllers
         //public IActionResult Login(LoginRequest loginRequest)
         public IActionResult Login()
         {
+            ViewBag.apiurl = APIUrl;
             return View();
         }
         
         public IActionResult LandingPage(int id)
         {
+            ViewBag.apiurl = APIUrl;
             return View();
         }
 
         public IActionResult Search(string city)
         {
+            return View();
+        }
+        public IActionResult UnRegistered(string city)
+        {
+            ViewBag.apiurl = APIUrl;
             return View();
         }
 
@@ -66,9 +73,9 @@ namespace EnManaiUI.Controllers
         {
             return View();
         }
-        //public IActionResult SearchResult(string city)
-        //{
-        //    return View();
-        //}
+        public IActionResult SearchResult(string city)
+        {
+            return View();
+        }
     }
 }

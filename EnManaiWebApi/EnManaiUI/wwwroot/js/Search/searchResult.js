@@ -100,6 +100,8 @@ function GetPhoneNumber(e) {
                 SetLocalData("user", user);
                 phoneList = result.rentalHouseDetailPhoneNumber.landLineNumber + "," + result.rentalHouseDetailPhoneNumber.phoneNumber + ',' + result.rentalHouseDetailPhoneNumber.phoneNumberPrimary;
                 $('#' + rentalId + '_lblPhoneNumber').text(phoneList);
+                //2_btnPhoneNumber
+                $('#' + rentalId + '_btnPhoneNumber').hide();
                 //rentalDetails = result.rentalDetails;
                 //setLocalRentalData("rentaldetails", rentalDetails);
                 //if (result.rentalDetails.length > 0) {
@@ -121,7 +123,7 @@ function loadRentalData() {
     $.each(rentalData, function (i, v) {
         var v1;
         if (userType === 'UnRegistered') {
-            v1 = unregisterted;
+            v1 = unregistered;
             v2 = v1.replace('--CITY--', v.city).replace('--BHK--', v.bhk).replace('--DEPOSIT--', 5000).replace('--PINCODE--', v.pincode);
             $('#petsAllowed').prop('checked', v.petsAllowed);
             $('.rentals').append(v2);
@@ -146,7 +148,43 @@ function loadRentalData() {
 }
 
 var test = "<div id=\"header_idx\" style=\"width: 500px; background: linear - gradient(90deg, rgba(30, 30, 241, 1) 0 %, rgba(0, 212, 255, 1) 35 %, rgba(255, 255, 255, 1) 100 %);\" >1 BHK Rent in Palani - 624601 </div > ";
-var unregisterted = "<div class=\"searchResultContent ma-10\"> <div style=\"padding-bottom: 10px;\" ><div style=\"float: left; width: 33.33%;\"><span id=\"buildarea\">--SQRT--</span></div><div style=\"float: left; width: 33.33%;\"><span id=\"bhkType\">--BHK--</span></div><div style=\"float: left; width: 33.33%;\"><span id=\"deposit\">--DEPOSIT--</span></div></div style=\"margin-top: 30px;\" ><div><div class=\"pa-10\" style=\"float: left; width: 40%;height:230px;;border: 2px solid lightgrey\"><div id=\"houseImage\">Image</div></div><div class=\"ma-10\" style=\"float: left; width: 60%;\"><div id=\"city\">--CITY--</div><div id=\"pincode\">--PINCODE--</div><div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"cooperationWater\"><label class=\"form-check-label\" for=\"cooperationWater\">Co-operation Water</label></div><div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"bachelor\"><label class=\"form-check-label\" for=\"Bachelor\">Bachelor</label></div><div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"petsAllowed\"><label class=\"form-check-label\" for=\"petsAllowed\">Pets Allowed</label></div></div></div></div></div >"
+
+//var unregisterted = "<div class=\"searchResultContent ma-10\"> <div style=\"padding-bottom: 10px;\" ><div style=\"float: left; width: 33.33%;\"><span id=\"buildarea\">--SQRT--</span></div><div style=\"float: left; width: 33.33%;\"><span id=\"bhkType\">--BHK--</span></div><div style=\"float: left; width: 33.33%;\"><span id=\"deposit\">--DEPOSIT--</span></div></div style=\"margin-top: 30px;\" ><div><div class=\"pa-10\" style=\"float: left; width: 40%;height:230px;;border: 2px solid lightgrey\"><div id=\"houseImage\">Image</div></div><div class=\"ma-10\" style=\"float: left; width: 60%;\"><div id=\"city\">--CITY--</div><div id=\"pincode\">--PINCODE--</div><div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"cooperationWater\"><label class=\"form-check-label\" for=\"cooperationWater\">Co-operation Water</label></div><div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"bachelor\"><label class=\"form-check-label\" for=\"Bachelor\">Bachelor</label></div><div class=\"form-check\"><input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"petsAllowed\"><label class=\"form-check-label\" for=\"petsAllowed\">Pets Allowed</label></div></div></div></div></div>"
+
+var unregistered = '<div class=\"searchUnRegResultContent ma-10\"> \n' +
+    '	<div style=\"padding-bottom: 10px;\" >\n' +
+    '		<div style=\"float: left; width: 33.33%;\">\n' +
+    '			<span id=\"buildarea\">--SQRT--</span>\n' +
+    '		</div>\n' +
+    '		<div style=\"float: left; width: 33.33%;\">\n' +
+    '			<span id=\"bhkType\">--BHK--</span>\n' +
+    '		</div>\n' +
+    '		<div style=\"float: left; width: 33.33%;\">\n' +
+    '			<span id=\"deposit\">--DEPOSIT--</span>\n' +
+    '		</div>\n' +
+    '	</div>\n' +
+    '	<div>\n' +
+    '		<div class=\"pa-10\" style=\"float: left; width: 40%;height:230px;;border: 2px solid lightgrey\">\n' +
+    '			<div id=\"houseImage\">Image</div>\n' +
+    '		</div>\n' +
+    '		<div class=\"ma-10\" style=\"float: left; width: 60%;\">\n' +
+    '			<div id=\"city\">--CITY--</div>\n' +
+    '			<div id=\"pincode\">--PINCODE--</div>\n' +
+    '			<div class=\"form-check\">\n' +
+    '				<input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"cooperationWater\">\n' +
+    '				<label class=\"form-check-label\" for=\"cooperationWater\">Co-operation Water</label>\n' +
+    '			</div>\n' +
+    '			<div class=\"form-check\">\n' +
+    '				<input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"bachelor\">\n' +
+    '				<label class=\"form-check-label\" for=\"Bachelor\">Bachelor</label>\n' +
+    '			</div>\n' +
+    '			<div class=\"form-check\">\n' +
+    '				<input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"petsAllowed\">\n' +
+    '				<label class=\"form-check-label\" for=\"petsAllowed\">Pets Allowed</label>\n' +
+    '			</div>\n' +
+    '		</div>\n' +
+    '	</div>\n' +
+    '</div>';
 
 var loggedHtml = '<div class="searchResultContent ma-10">' +
     '<div style="padding-bottom: 10px;" >' +
@@ -252,6 +290,110 @@ var loggedHtml = '<div class="searchResultContent ma-10">' +
     '</div>' +
     '</div>';
 
+
+var paidedHTML = '<div class="searchResultContent ma-10">' +
+    '    <div style="padding-bottom: 10px;" >' +
+    '    	<div style="float: left; width: 33.33%;"><span id="--idx--_buildarea">--SQRT--</span></div>' +
+    '    	<div style="float: left; width: 33.33%;"><span id="--idx--_bhkType">--BHK--</span></div>' +
+    '    	<div style="float: left; width: 33.33%;"><span id="--idx--_deposit">--DEPOSIT--</span></div>' +
+    '    	</div style="margin-top: 30px;\" >' +
+    '    <div>' +
+    '    	<div class="pa-10" style="float: left; width: 40%;height:230px;;border: 2px solid lightgrey">' +
+    '    	<div id="--idx--_houseImage">Image</div>' +
+    '    	</div>' +
+    '    <div class="ma-10" style="float: left; width: 60%;">' +
+    '        <div style="float: left; width: 50%;height:230px;">' +
+    '            <div style="padding-left:10px" id="--idx--_areaornagar">Area Or Nagar:--AREAORNAGAR--</div>' +
+    '            <div style="padding-left:10px" id="--idx--_city">City:--CITY--</div>' +
+    '            <div style="padding-left:10px" id="--idx--_pincode">Pincode:--PINCODE--</div>' +
+    '   ' +
+    '            <div style="padding-left:10px" id="--idx--_floor">Floor:--FLOOR--</div>' +
+    '    //\'</div>\' +' +
+    '            <div class="form-check">' +
+    '                <input style="padding-left:10px" class="form-check-input" type="checkbox" value="" onclick="return false" id="--idx--_cooperationWater">' +
+    '                    <label class="form-check-label" for="cooperationWater">Co-operation Water</label>' +
+    '            </div>' +
+    '            <div class="form-check">' +
+    '                <input style="padding-left:10px" class="form-check-input" type="checkbox" value="" onclick="return false" id="--idx--_bachelor">' +
+    '                    <label class="form-check-label" for="Bachelor">Bachelor</label>' +
+    '           </div>' +
+    '            <div class="form-check">' +
+    '                <input style="padding-left:10px" class="form-check-input" type="checkbox" value="" onclick="return false" id="--idx--_petsAllowed">' +
+    '                    <label class="form-check-label" for="petsAllowed">Pets Allowed</label>' +
+    '            </div>' +
+    '        </div>' +
+    '   <div style="float: right; width: 50%;height:230px;">' +
+    '        <div class="form-check">' +
+    '        <input style="padding-left:10px" class="form-check-input" type="checkbox" value="" onclick="return false" id="--idx--_TwoWheelerParking">' +
+    '        <label class="form-check-label" for="Two Wheeler Parking">Two Wheeler Parking</label>' +
+    '        </div>' +
+    '        <div class="form-check">' +
+    '        <input style="padding-left:10px" class="form-check-input" type="checkbox" value="" onclick="return false" id="--idx--_FourWheelerParking">' +
+    '        <label class="form-check-label" for="Four Wheeler Parking">Four Wheeler Parking</label>' +
+    '        </div>' +
+    '        <div class="form-check">' +
+    '        <input style="padding-left:10px" class="form-check-input" type="checkbox" value="" onclick="return false" id="--idx--_SeparateHouse">' +
+    '        <label class="form-check-label" for="Separate House">Separate House</label>' +
+    '        </div>' +
+    '        <div style="padding-left:10px" id="--idx--_RentFrom">Rent From:--RENTFROM--</div>' +
+    '        <div style="padding-left:10px" id="--idx--_RentTo">Rent To:--RENTO--</div>' +
+    '    //\'    </div>\' +' +
+    '        <div class="form-check">' +
+    '       <input style="padding-left:10px" class="form-check-input" type="checkbox" onclick="return false" value="" id="--idx--_NonVeg">' +
+    '        <label class="form-check-label" for="Non Veg">Non Veg</label>' +
+    '        <div><button type="button" data-idx="--idx--" id="--idx--_btnPhoneNumber" onclick="GetPhoneNumber(this)" class="btn btn-primary">GetPhoneNumber</button>' +
+    '        <span id="--idx--_lblPhoneNumber" class="label label-primary">Primary Label</span></div>' +
+    '        </div>' +
+    '    </div>' +
+    '    </div>' +
+    '    <div class="ma-10" style="float: left; width: 60%;">' +
+    '    	<div id="areaornagar">--AreaOrNagar--</div>' +
+    '    	<div id="city">--CITY--</div>' +
+    '    	<div id="pincode">--PINCODE--</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbo" value="" id="cooperationWater">' +
+    '    		<label class="form-check-label" for="cooperationWater">Floor</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="cooperationWater">' +
+    '    		<label class="form-check-label" for="cooperationWater">Co-operation Water</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="bachelor">' +
+    '    		<label class="form-check-label" for="Bachelor">Bachelor</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="petsAllowed">' +
+    '    		<label class="form-check-label" for="petsAllowed">Pets Allowed</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="TwoWheelerParking">' +
+    '    		<label class="form-check-label" for="Two Wheeler Parking">Two Wheeler Parking</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="FourWheelerParking">' +
+    '    		<label class="form-check-label" for="Four Wheeler Parking">Four Wheeler Parking</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="SeparateHouse">' +
+    '    		<label class="form-check-label" for="Separate House">Separate House</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="Rent From">' +
+    '    		<label class="form-check-label" for="Rent From">Rent From</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="RentTo">' +
+    '    		<label class="form-check-label" for="Rent To">Rent To</label>' +
+    '    	</div>' +
+    '    	<div class="form-check">' +
+    '    		<input class="form-check-input" type="checkbox" value="" id="NonVeg">' +
+    '    		<label class="form-check-label" for="Non Veg">Non Veg</label>' +
+    '    	</div>' +
+    '    </div>' +
+    '    </div>';
+	
+;
 
 
 

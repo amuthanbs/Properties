@@ -30,7 +30,7 @@ function SearchByCity() {
                     setLocalPageNumber('PageNumber', 1);
                 }
                 setLocalRentalData("rentaldetails", rentalDetails);
-                window.location.href = 'https://localhost:7059/Home/SearchResult?city=' + search;
+                window.location.href = 'https://localhost:7059/Home/UnRegistered?city=' + search;
             },
             error: function (result, xhr, settings) {
                 alert('API call is not made');

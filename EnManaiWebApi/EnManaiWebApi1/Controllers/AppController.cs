@@ -154,22 +154,44 @@ namespace EnManaiWebApi.Controllers
             return Ok(res);
         }
         #region Common
+
+        public static Object Copy(Object parent, Object child)
+        {
+            var parentProperties = parent.GetType().GetProperties();
+            var childProperties = child.GetType().GetProperties();
+
+            foreach (var parentProperty in parentProperties)
+            {
+                foreach (var childProperty in childProperties)
+                {
+                    if (parentProperty.Name == childProperty.Name && parentProperty.PropertyType == childProperty.PropertyType)
+                    {
+                        childProperty.SetValue(child, parentProperty.GetValue(parent));
+                        break;
+                    }
+                }
+            }
+            return child;
+        }
+
         private List<UnregisteredRentalHouseDetail> ConvertTounregisteredRentalHouseDetail(List<RentalHouseDetail> rentalDetails)
         {
             List<UnregisteredRentalHouseDetail> unregisteredRentalHouseDetails = new List<UnregisteredRentalHouseDetail>();
             foreach (var item in rentalDetails)
             {
-                UnregisteredRentalHouseDetail urRentalDetails = new UnregisteredRentalHouseDetail()
-                {
-                    HouseOwnerId = item.HouseOwnerId,
-                    City = item.City,
-                    Bachelor = item.Bachelor,
-                    CoOperationWater = item.CoOperationWater,
-                    Id = item.Id,
-                    NonVeg = item.NonVeg,
-                    Pincode = item.Pincode
-                };
-                unregisteredRentalHouseDetails.Add(urRentalDetails);
+                UnregisteredRentalHouseDetail urRentalDetails = new UnregisteredRentalHouseDetail();
+                //UnregisteredRentalHouseDetail urRentalDetails = new UnregisteredRentalHouseDetail()
+                //{
+                //    HouseOwnerId = item.HouseOwnerId,
+                //    City = item.City,
+                //    Bachelor = item.Bachelor,
+                //    CoOperationWater = item.CoOperationWater,
+                //    Id = item.Id,
+                //    NonVeg = item.NonVeg,
+                //    Pincode = item.Pincode
+                //};
+                UnregisteredRentalHouseDetail ur = (UnregisteredRentalHouseDetail)Copy(item, urRentalDetails);
+                unregisteredRentalHouseDetails.Add(ur);
             }
             return unregisteredRentalHouseDetails;
 

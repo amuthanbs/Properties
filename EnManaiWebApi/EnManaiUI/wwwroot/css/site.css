@@ -66,6 +66,17 @@ body {
     border-radius: 20px;
     padding: 10px;
 }
+.searchUnRegResultContent {
+    width: 1200px;
+    height: 300px;
+    border-block-end-style: initial;
+    max-height: 700px;
+    border: solid;
+    border-width: medium;
+    border-color: blue;
+    border-radius: 20px;
+    padding: 10px;
+}
 .pa-20{
     padding:20px;
 }
